@@ -1,0 +1,7 @@
+{
+  "listen": "0.0.0.0:18184",
+  "admin_token": "123456",
+  "state_dir": "/app/state",
+  "trusted_networks": ["172.16.0.0/12", "127.0.0.0/8", "::1/128"],
+  "accounts": []
+}

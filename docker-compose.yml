@@ -1,0 +1,9 @@
+services:
+  gateway:
+    image: wxyin/right-codex:latest
+    restart: unless-stopped
+    stop_grace_period: 330s
+    ports: ["18184:18184"]
+    volumes:
+      - ./config.json:/app/config.json:ro
+      - ./state:/app/state

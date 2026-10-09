@@ -1,0 +1,14 @@
+/target/
+/var/
+/state/
+.env
+/config.json
+*.log
+.DS_Store
+__pycache__/
+/AGENTS.md
+# Pinned upstream files must survive a clean clone despite global editor ignores.
+!vendor/codex/.vscode/
+!vendor/codex/.vscode/extensions.json
+!vendor/codex/.vscode/launch.json
+!vendor/codex/.vscode/settings.json

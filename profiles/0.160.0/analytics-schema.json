@@ -1,0 +1,6998 @@
+{
+  "definitions": {
+    "AppServerRpcTransport": {
+      "oneOf": [
+        {
+          "const": "stdio"
+        },
+        {
+          "const": "websocket"
+        },
+        {
+          "const": "in_process"
+        }
+      ]
+    },
+    "ArtifactOperationLifecycle": {
+      "oneOf": [
+        {
+          "const": "started"
+        }
+      ]
+    },
+    "CodexAcceptedLineFingerprintsEventParams": {
+      "evidence": {
+        "line": 179,
+        "path": "codex-rs/analytics/src/events.rs"
+      },
+      "properties": {
+        "accepted_added_lines": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "accepted_deleted_lines": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "completed_at": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "event_type": {
+          "const": "codex.accepted_line_fingerprints"
+        },
+        "line_fingerprints": {
+          "array": {
+            "type": "null"
+          },
+          "maxItems": 0
+        },
+        "model_slug": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "product_surface": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "repo_hash": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "thread_id": {
+          "type": "string"
+        },
+        "turn_id": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "event_type",
+        "turn_id",
+        "thread_id",
+        "product_surface",
+        "model_slug",
+        "completed_at",
+        "repo_hash",
+        "accepted_added_lines",
+        "accepted_deleted_lines",
+        "line_fingerprints"
+      ],
+      "type": "object"
+    },
+    "CodexAcceptedLineFingerprintsEventRequest": {
+      "evidence": {
+        "line": 195,
+        "path": "codex-rs/analytics/src/events.rs"
+      },
+      "properties": {
+        "event_params": {
+          "ref": "CodexAcceptedLineFingerprintsEventParams"
+        },
+        "event_type": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "event_type",
+        "event_params"
+      ],
+      "type": "object"
+    },
+    "CodexAppMentionedEventRequest": {
+      "evidence": {
+        "line": 972,
+        "path": "codex-rs/analytics/src/events.rs"
+      },
+      "properties": {
+        "event_params": {
+          "ref": "CodexAppMetadata"
+        },
+        "event_type": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "event_type",
+        "event_params"
+      ],
+      "type": "object"
+    },
+    "CodexAppMetadata": {
+      "evidence": {
+        "line": 961,
+        "path": "codex-rs/analytics/src/events.rs"
+      },
+      "properties": {
+        "app_name": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "connector_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "invoke_type": {
+          "nullable": {
+            "ref": "InvocationType"
+          }
+        },
+        "model_slug": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "product_client_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "thread_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "turn_id": {
+          "nullable": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "connector_id",
+        "thread_id",
+        "turn_id",
+        "app_name",
+        "product_client_id",
+        "invoke_type",
+        "model_slug"
+      ],
+      "type": "object"
+    },
+    "CodexAppServerClientMetadata": {
+      "evidence": {
+        "line": 222,
+        "path": "codex-rs/analytics/src/events.rs"
+      },
+      "properties": {
+        "client_name": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "client_version": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "experimental_api_enabled": {
+          "nullable": {
+            "type": "boolean"
+          }
+        },
+        "product_client_id": {
+          "type": "string"
+        },
+        "rpc_transport": {
+          "ref": "AppServerRpcTransport"
+        }
+      },
+      "required": [
+        "product_client_id",
+        "client_name",
+        "client_version",
+        "rpc_transport",
+        "experimental_api_enabled"
+      ],
+      "type": "object"
+    },
+    "CodexAppUsedEventRequest": {
+      "evidence": {
+        "line": 986,
+        "path": "codex-rs/analytics/src/events.rs"
+      },
+      "properties": {
+        "event_params": {
+          "ref": "CodexAppUsedMetadata"
+        },
+        "event_type": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "event_type",
+        "event_params"
+      ],
+      "type": "object"
+    },
+    "CodexAppUsedMetadata": {
+      "evidence": {
+        "line": 978,
+        "path": "codex-rs/analytics/src/events.rs"
+      },
+      "properties": {
+        "app_name": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "connector_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "elicitation_type": {
+          "nullable": {
+            "ref": "ElicitationType"
+          }
+        },
+        "invoke_type": {
+          "nullable": {
+            "ref": "InvocationType"
+          }
+        },
+        "model_slug": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "product_client_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "thread_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "turn_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "voice_session_id": {
+          "nullable": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "voice_session_id",
+        "elicitation_type",
+        "connector_id",
+        "thread_id",
+        "turn_id",
+        "app_name",
+        "product_client_id",
+        "invoke_type",
+        "model_slug"
+      ],
+      "type": "object"
+    },
+    "CodexArtifactOperationEventParams": {
+      "evidence": {
+        "line": 109,
+        "path": "codex-rs/analytics/src/events.rs"
+      },
+      "properties": {
+        "artifact_type": {
+          "type": "string"
+        },
+        "execution_backend": {
+          "type": "string"
+        },
+        "expected_output_count": {
+          "bits": 32,
+          "type": "uint"
+        },
+        "item_id": {
+          "type": "string"
+        },
+        "lifecycle": {
+          "ref": "ArtifactOperationLifecycle"
+        },
+        "model_slug": {
+          "type": "string"
+        },
+        "occurred_at_ms": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "operation_kind": {
+          "type": "string"
+        },
+        "output_format": {
+          "type": "string"
+        },
+        "plugin_id": {
+          "type": "string"
+        },
+        "product_client_id": {
+          "type": "string"
+        },
+        "runtime": {
+          "ref": "CodexRuntimeMetadata"
+        },
+        "script_path": {
+          "type": "string"
+        },
+        "skill": {
+          "type": "string"
+        },
+        "thread_id": {
+          "type": "string"
+        },
+        "turn_id": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "thread_id",
+        "turn_id",
+        "item_id",
+        "lifecycle",
+        "occurred_at_ms",
+        "product_client_id",
+        "runtime",
+        "model_slug",
+        "plugin_id",
+        "script_path",
+        "skill",
+        "artifact_type",
+        "operation_kind",
+        "expected_output_count",
+        "output_format",
+        "execution_backend"
+      ],
+      "type": "object"
+    },
+    "CodexArtifactOperationEventRequest": {
+      "evidence": {
+        "line": 129,
+        "path": "codex-rs/analytics/src/events.rs"
+      },
+      "properties": {
+        "event_params": {
+          "ref": "CodexArtifactOperationEventParams"
+        },
+        "event_type": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "event_type",
+        "event_params"
+      ],
+      "type": "object"
+    },
+    "CodexCollabAgentToolCallEventParams": {
+      "evidence": {
+        "line": 909,
+        "path": "codex-rs/analytics/src/events.rs"
+      },
+      "properties": {
+        "agent_state_count": {
+          "nullable": {
+            "bits": 64,
+            "type": "uint"
+          }
+        },
+        "app_server_client": {
+          "ref": "CodexAppServerClientMetadata"
+        },
+        "cell_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "completed_agent_count": {
+          "nullable": {
+            "bits": 64,
+            "type": "uint"
+          }
+        },
+        "completed_at_ms": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "duration_ms": {
+          "nullable": {
+            "bits": 64,
+            "type": "uint"
+          }
+        },
+        "execution_duration_ms": {
+          "nullable": {
+            "bits": 64,
+            "type": "uint"
+          }
+        },
+        "failed_agent_count": {
+          "nullable": {
+            "bits": 64,
+            "type": "uint"
+          }
+        },
+        "failure_kind": {
+          "nullable": {
+            "ref": "ToolItemFailureKind"
+          }
+        },
+        "final_approval_outcome": {
+          "ref": "FinalApprovalOutcome"
+        },
+        "guardian_review_count": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "item_id": {
+          "type": "string"
+        },
+        "originating_response_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "parent_call_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "parent_thread_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "receiver_thread_count": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "receiver_thread_ids": {
+          "nullable": {
+            "array": {
+              "type": "string"
+            }
+          }
+        },
+        "requested_additional_permissions": {
+          "type": "boolean"
+        },
+        "requested_model": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "requested_network_access": {
+          "type": "boolean"
+        },
+        "requested_reasoning_effort": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "review_count": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "root_turn_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "runtime": {
+          "ref": "CodexRuntimeMetadata"
+        },
+        "sender_thread_id": {
+          "type": "string"
+        },
+        "session_id": {
+          "type": "string"
+        },
+        "started_at_ms": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "subagent_source": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "subsequent_response_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "terminal_status": {
+          "ref": "ToolItemTerminalStatus"
+        },
+        "thread_id": {
+          "type": "string"
+        },
+        "thread_source": {
+          "nullable": {
+            "ref": "ThreadSource"
+          }
+        },
+        "tool_event_type": {
+          "nullable": {
+            "ref": "ToolEventType"
+          }
+        },
+        "tool_name": {
+          "type": "string"
+        },
+        "turn_id": {
+          "type": "string"
+        },
+        "user_review_count": {
+          "bits": 64,
+          "type": "uint"
+        }
+      },
+      "required": [
+        "sender_thread_id",
+        "receiver_thread_count",
+        "receiver_thread_ids",
+        "requested_model",
+        "requested_reasoning_effort",
+        "agent_state_count",
+        "completed_agent_count",
+        "failed_agent_count",
+        "thread_id",
+        "session_id",
+        "turn_id",
+        "root_turn_id",
+        "item_id",
+        "cell_id",
+        "parent_call_id",
+        "originating_response_id",
+        "subsequent_response_id",
+        "app_server_client",
+        "runtime",
+        "thread_source",
+        "subagent_source",
+        "parent_thread_id",
+        "tool_name",
+        "tool_event_type",
+        "started_at_ms",
+        "completed_at_ms",
+        "duration_ms",
+        "execution_duration_ms",
+        "review_count",
+        "guardian_review_count",
+        "user_review_count",
+        "final_approval_outcome",
+        "terminal_status",
+        "failure_kind",
+        "requested_additional_permissions",
+        "requested_network_access"
+      ],
+      "type": "object"
+    },
+    "CodexCollabAgentToolCallEventRequest": {
+      "evidence": {
+        "line": 923,
+        "path": "codex-rs/analytics/src/events.rs"
+      },
+      "properties": {
+        "event_params": {
+          "ref": "CodexCollabAgentToolCallEventParams"
+        },
+        "event_type": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "event_type",
+        "event_params"
+      ],
+      "type": "object"
+    },
+    "CodexCommandExecutionEventParams": {
+      "evidence": {
+        "line": 796,
+        "path": "codex-rs/analytics/src/events.rs"
+      },
+      "properties": {
+        "app_server_client": {
+          "ref": "CodexAppServerClientMetadata"
+        },
+        "cell_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "command_execution_source": {
+          "ref": "CommandExecutionSource"
+        },
+        "command_list_files_action_count": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "command_read_action_count": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "command_search_action_count": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "command_total_action_count": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "command_unknown_action_count": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "completed_at_ms": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "duration_ms": {
+          "nullable": {
+            "bits": 64,
+            "type": "uint"
+          }
+        },
+        "execution_duration_ms": {
+          "nullable": {
+            "bits": 64,
+            "type": "uint"
+          }
+        },
+        "exit_code": {
+          "nullable": {
+            "bits": 32,
+            "type": "int"
+          }
+        },
+        "failure_kind": {
+          "nullable": {
+            "ref": "ToolItemFailureKind"
+          }
+        },
+        "final_approval_outcome": {
+          "ref": "FinalApprovalOutcome"
+        },
+        "guardian_review_count": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "item_id": {
+          "type": "string"
+        },
+        "model_slug": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "originating_response_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "parent_call_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "parent_thread_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "plugin_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "reasoning_effort": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "requested_additional_permissions": {
+          "type": "boolean"
+        },
+        "requested_network_access": {
+          "type": "boolean"
+        },
+        "review_count": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "root_turn_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "runtime": {
+          "ref": "CodexRuntimeMetadata"
+        },
+        "sandbox_backend": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "script_path": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "session_id": {
+          "type": "string"
+        },
+        "started_at_ms": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "subagent_source": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "subsequent_response_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "terminal_status": {
+          "ref": "ToolItemTerminalStatus"
+        },
+        "thread_id": {
+          "type": "string"
+        },
+        "thread_source": {
+          "nullable": {
+            "ref": "ThreadSource"
+          }
+        },
+        "tool_event_type": {
+          "nullable": {
+            "ref": "ToolEventType"
+          }
+        },
+        "tool_name": {
+          "type": "string"
+        },
+        "turn_id": {
+          "type": "string"
+        },
+        "user_review_count": {
+          "bits": 64,
+          "type": "uint"
+        }
+      },
+      "required": [
+        "sandbox_backend",
+        "model_slug",
+        "reasoning_effort",
+        "plugin_id",
+        "script_path",
+        "command_execution_source",
+        "exit_code",
+        "command_total_action_count",
+        "command_read_action_count",
+        "command_list_files_action_count",
+        "command_search_action_count",
+        "command_unknown_action_count",
+        "thread_id",
+        "session_id",
+        "turn_id",
+        "root_turn_id",
+        "item_id",
+        "cell_id",
+        "parent_call_id",
+        "originating_response_id",
+        "subsequent_response_id",
+        "app_server_client",
+        "runtime",
+        "thread_source",
+        "subagent_source",
+        "parent_thread_id",
+        "tool_name",
+        "tool_event_type",
+        "started_at_ms",
+        "completed_at_ms",
+        "duration_ms",
+        "execution_duration_ms",
+        "review_count",
+        "guardian_review_count",
+        "user_review_count",
+        "final_approval_outcome",
+        "terminal_status",
+        "failure_kind",
+        "requested_additional_permissions",
+        "requested_network_access"
+      ],
+      "type": "object"
+    },
+    "CodexCommandExecutionEventRequest": {
+      "evidence": {
+        "line": 814,
+        "path": "codex-rs/analytics/src/events.rs"
+      },
+      "properties": {
+        "event_params": {
+          "ref": "CodexCommandExecutionEventParams"
+        },
+        "event_type": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "event_type",
+        "event_params"
+      ],
+      "type": "object"
+    },
+    "CodexCompactionEventParams": {
+      "evidence": {
+        "line": 1011,
+        "path": "codex-rs/analytics/src/events.rs"
+      },
+      "properties": {
+        "active_context_tokens_after": {
+          "bits": 64,
+          "type": "int"
+        },
+        "active_context_tokens_before": {
+          "bits": 64,
+          "type": "int"
+        },
+        "app_server_client": {
+          "ref": "CodexAppServerClientMetadata"
+        },
+        "cache_write_input_tokens": {
+          "nullable": {
+            "bits": 64,
+            "type": "int"
+          }
+        },
+        "cached_input_tokens": {
+          "nullable": {
+            "bits": 64,
+            "type": "int"
+          }
+        },
+        "codex_error_http_status_code": {
+          "nullable": {
+            "bits": 16,
+            "type": "uint"
+          }
+        },
+        "codex_error_kind": {
+          "nullable": {
+            "ref": "CodexErrKind"
+          }
+        },
+        "compaction_summary_tokens": {
+          "nullable": {
+            "bits": 64,
+            "type": "int"
+          }
+        },
+        "completed_at": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "duration_ms": {
+          "nullable": {
+            "bits": 64,
+            "type": "uint"
+          }
+        },
+        "implementation": {
+          "ref": "CompactionImplementation"
+        },
+        "parent_thread_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "phase": {
+          "ref": "CompactionPhase"
+        },
+        "reason": {
+          "ref": "CompactionReason"
+        },
+        "retained_image_count": {
+          "nullable": {
+            "bits": 64,
+            "type": "uint"
+          }
+        },
+        "runtime": {
+          "ref": "CodexRuntimeMetadata"
+        },
+        "session_id": {
+          "type": "string"
+        },
+        "started_at": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "status": {
+          "ref": "CompactionStatus"
+        },
+        "strategy": {
+          "ref": "CompactionStrategy"
+        },
+        "subagent_source": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "thread_id": {
+          "type": "string"
+        },
+        "thread_source": {
+          "nullable": {
+            "ref": "ThreadSource"
+          }
+        },
+        "trigger": {
+          "ref": "CompactionTrigger"
+        },
+        "turn_id": {
+          "type": "string"
+        },
+        "usage_limit_window_minutes": {
+          "nullable": {
+            "bits": 16,
+            "type": "uint"
+          }
+        }
+      },
+      "required": [
+        "thread_id",
+        "session_id",
+        "turn_id",
+        "app_server_client",
+        "runtime",
+        "thread_source",
+        "subagent_source",
+        "parent_thread_id",
+        "trigger",
+        "reason",
+        "implementation",
+        "phase",
+        "strategy",
+        "status",
+        "codex_error_kind",
+        "codex_error_http_status_code",
+        "usage_limit_window_minutes",
+        "active_context_tokens_before",
+        "active_context_tokens_after",
+        "retained_image_count",
+        "compaction_summary_tokens",
+        "cached_input_tokens",
+        "cache_write_input_tokens",
+        "started_at",
+        "completed_at",
+        "duration_ms"
+      ],
+      "type": "object"
+    },
+    "CodexCompactionEventRequest": {
+      "evidence": {
+        "line": 1041,
+        "path": "codex-rs/analytics/src/events.rs"
+      },
+      "properties": {
+        "event_params": {
+          "ref": "CodexCompactionEventParams"
+        },
+        "event_type": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "event_type",
+        "event_params"
+      ],
+      "type": "object"
+    },
+    "CodexControlToolCallEventParams": {
+      "evidence": {
+        "line": 896,
+        "path": "codex-rs/analytics/src/events.rs"
+      },
+      "properties": {
+        "app_server_client": {
+          "ref": "CodexAppServerClientMetadata"
+        },
+        "cell_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "completed_at_ms": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "duration_ms": {
+          "nullable": {
+            "bits": 64,
+            "type": "uint"
+          }
+        },
+        "execution_duration_ms": {
+          "nullable": {
+            "bits": 64,
+            "type": "uint"
+          }
+        },
+        "failure_kind": {
+          "nullable": {
+            "ref": "ToolItemFailureKind"
+          }
+        },
+        "final_approval_outcome": {
+          "ref": "FinalApprovalOutcome"
+        },
+        "guardian_review_count": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "item_id": {
+          "type": "string"
+        },
+        "originating_response_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "parent_call_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "parent_thread_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "requested_additional_permissions": {
+          "type": "boolean"
+        },
+        "requested_network_access": {
+          "type": "boolean"
+        },
+        "review_count": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "root_turn_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "runtime": {
+          "ref": "CodexRuntimeMetadata"
+        },
+        "session_id": {
+          "type": "string"
+        },
+        "started_at_ms": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "subagent_source": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "subsequent_response_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "success": {
+          "type": "boolean"
+        },
+        "terminal_status": {
+          "ref": "ToolItemTerminalStatus"
+        },
+        "thread_id": {
+          "type": "string"
+        },
+        "thread_source": {
+          "nullable": {
+            "ref": "ThreadSource"
+          }
+        },
+        "tool_event_type": {
+          "nullable": {
+            "ref": "ToolEventType"
+          }
+        },
+        "tool_name": {
+          "type": "string"
+        },
+        "turn_id": {
+          "type": "string"
+        },
+        "user_review_count": {
+          "bits": 64,
+          "type": "uint"
+        }
+      },
+      "required": [
+        "success",
+        "thread_id",
+        "session_id",
+        "turn_id",
+        "root_turn_id",
+        "item_id",
+        "cell_id",
+        "parent_call_id",
+        "originating_response_id",
+        "subsequent_response_id",
+        "app_server_client",
+        "runtime",
+        "thread_source",
+        "subagent_source",
+        "parent_thread_id",
+        "tool_name",
+        "tool_event_type",
+        "started_at_ms",
+        "completed_at_ms",
+        "duration_ms",
+        "execution_duration_ms",
+        "review_count",
+        "guardian_review_count",
+        "user_review_count",
+        "final_approval_outcome",
+        "terminal_status",
+        "failure_kind",
+        "requested_additional_permissions",
+        "requested_network_access"
+      ],
+      "type": "object"
+    },
+    "CodexControlToolCallEventRequest": {
+      "evidence": {
+        "line": 903,
+        "path": "codex-rs/analytics/src/events.rs"
+      },
+      "properties": {
+        "event_params": {
+          "ref": "CodexControlToolCallEventParams"
+        },
+        "event_type": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "event_type",
+        "event_params"
+      ],
+      "type": "object"
+    },
+    "CodexDynamicToolCallEventParams": {
+      "evidence": {
+        "line": 878,
+        "path": "codex-rs/analytics/src/events.rs"
+      },
+      "properties": {
+        "app_server_client": {
+          "ref": "CodexAppServerClientMetadata"
+        },
+        "cell_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "completed_at_ms": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "duration_ms": {
+          "nullable": {
+            "bits": 64,
+            "type": "uint"
+          }
+        },
+        "dynamic_tool_name": {
+          "type": "string"
+        },
+        "execution_duration_ms": {
+          "nullable": {
+            "bits": 64,
+            "type": "uint"
+          }
+        },
+        "failure_kind": {
+          "nullable": {
+            "ref": "ToolItemFailureKind"
+          }
+        },
+        "final_approval_outcome": {
+          "ref": "FinalApprovalOutcome"
+        },
+        "guardian_review_count": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "item_id": {
+          "type": "string"
+        },
+        "originating_response_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "output_audio_item_count": {
+          "nullable": {
+            "bits": 64,
+            "type": "uint"
+          }
+        },
+        "output_content_item_count": {
+          "nullable": {
+            "bits": 64,
+            "type": "uint"
+          }
+        },
+        "output_image_item_count": {
+          "nullable": {
+            "bits": 64,
+            "type": "uint"
+          }
+        },
+        "output_text_item_count": {
+          "nullable": {
+            "bits": 64,
+            "type": "uint"
+          }
+        },
+        "parent_call_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "parent_thread_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "requested_additional_permissions": {
+          "type": "boolean"
+        },
+        "requested_network_access": {
+          "type": "boolean"
+        },
+        "review_count": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "root_turn_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "runtime": {
+          "ref": "CodexRuntimeMetadata"
+        },
+        "session_id": {
+          "type": "string"
+        },
+        "started_at_ms": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "subagent_source": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "subsequent_response_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "success": {
+          "nullable": {
+            "type": "boolean"
+          }
+        },
+        "terminal_status": {
+          "ref": "ToolItemTerminalStatus"
+        },
+        "thread_id": {
+          "type": "string"
+        },
+        "thread_source": {
+          "nullable": {
+            "ref": "ThreadSource"
+          }
+        },
+        "tool_event_type": {
+          "nullable": {
+            "ref": "ToolEventType"
+          }
+        },
+        "tool_name": {
+          "type": "string"
+        },
+        "turn_id": {
+          "type": "string"
+        },
+        "user_review_count": {
+          "bits": 64,
+          "type": "uint"
+        }
+      },
+      "required": [
+        "dynamic_tool_name",
+        "success",
+        "output_content_item_count",
+        "output_text_item_count",
+        "output_image_item_count",
+        "output_audio_item_count",
+        "thread_id",
+        "session_id",
+        "turn_id",
+        "root_turn_id",
+        "item_id",
+        "cell_id",
+        "parent_call_id",
+        "originating_response_id",
+        "subsequent_response_id",
+        "app_server_client",
+        "runtime",
+        "thread_source",
+        "subagent_source",
+        "parent_thread_id",
+        "tool_name",
+        "tool_event_type",
+        "started_at_ms",
+        "completed_at_ms",
+        "duration_ms",
+        "execution_duration_ms",
+        "review_count",
+        "guardian_review_count",
+        "user_review_count",
+        "final_approval_outcome",
+        "terminal_status",
+        "failure_kind",
+        "requested_additional_permissions",
+        "requested_network_access"
+      ],
+      "type": "object"
+    },
+    "CodexDynamicToolCallEventRequest": {
+      "evidence": {
+        "line": 890,
+        "path": "codex-rs/analytics/src/events.rs"
+      },
+      "properties": {
+        "event_params": {
+          "ref": "CodexDynamicToolCallEventParams"
+        },
+        "event_type": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "event_type",
+        "event_params"
+      ],
+      "type": "object"
+    },
+    "CodexErrKind": {
+      "oneOf": [
+        {
+          "const": "turn_aborted"
+        },
+        {
+          "const": "session_budget_exceeded"
+        },
+        {
+          "const": "stream"
+        },
+        {
+          "const": "content_filter"
+        },
+        {
+          "const": "rate_limit_exceeded"
+        },
+        {
+          "const": "context_window_exceeded"
+        },
+        {
+          "const": "thread_not_found"
+        },
+        {
+          "const": "agent_limit_reached"
+        },
+        {
+          "const": "session_configured_not_first_event"
+        },
+        {
+          "const": "timeout"
+        },
+        {
+          "const": "request_timeout"
+        },
+        {
+          "const": "spawn"
+        },
+        {
+          "const": "interrupted"
+        },
+        {
+          "const": "unexpected_status"
+        },
+        {
+          "const": "invalid_request"
+        },
+        {
+          "const": "invalid_prompt"
+        },
+        {
+          "const": "tool_collision"
+        },
+        {
+          "const": "invalid_image_request"
+        },
+        {
+          "const": "usage_limit_reached"
+        },
+        {
+          "const": "server_overloaded"
+        },
+        {
+          "const": "flex_unavailable"
+        },
+        {
+          "const": "cyber_policy"
+        },
+        {
+          "const": "bio_policy"
+        },
+        {
+          "const": "misalignment_policy_violation"
+        },
+        {
+          "const": "response_stream_failed"
+        },
+        {
+          "const": "connection_failed"
+        },
+        {
+          "const": "quota_exceeded"
+        },
+        {
+          "const": "usage_not_included"
+        },
+        {
+          "const": "internal_server_error"
+        },
+        {
+          "const": "retry_limit"
+        },
+        {
+          "const": "internal_agent_died"
+        },
+        {
+          "const": "sandbox"
+        },
+        {
+          "const": "landlock_sandbox_executable_not_provided"
+        },
+        {
+          "const": "unsupported_operation"
+        },
+        {
+          "const": "refresh_token_failed"
+        },
+        {
+          "const": "fatal"
+        },
+        {
+          "const": "io"
+        },
+        {
+          "const": "json"
+        },
+        {
+          "const": "landlock_ruleset"
+        },
+        {
+          "const": "landlock_path_fd"
+        },
+        {
+          "const": "tokio_join"
+        },
+        {
+          "const": "env_var"
+        }
+      ]
+    },
+    "CodexErrorInfo": {
+      "oneOf": [
+        {
+          "const": "contextWindowExceeded"
+        },
+        {
+          "const": "sessionBudgetExceeded"
+        },
+        {
+          "const": "usageLimitExceeded"
+        },
+        {
+          "const": "rateLimitExceeded"
+        },
+        {
+          "const": "flexUnavailable"
+        },
+        {
+          "const": "serverOverloaded"
+        },
+        {
+          "const": "cyberPolicy"
+        },
+        {
+          "const": "misalignmentPolicyViolation"
+        },
+        {
+          "const": "tooManyDenials"
+        },
+        {
+          "properties": {
+            "httpConnectionFailed": {
+              "properties": {
+                "httpStatusCode": {
+                  "nullable": {
+                    "bits": 16,
+                    "type": "uint"
+                  }
+                }
+              },
+              "required": [
+                "httpStatusCode"
+              ],
+              "type": "object"
+            }
+          },
+          "required": [
+            "httpConnectionFailed"
+          ],
+          "type": "object"
+        },
+        {
+          "properties": {
+            "responseStreamConnectionFailed": {
+              "properties": {
+                "httpStatusCode": {
+                  "nullable": {
+                    "bits": 16,
+                    "type": "uint"
+                  }
+                }
+              },
+              "required": [
+                "httpStatusCode"
+              ],
+              "type": "object"
+            }
+          },
+          "required": [
+            "responseStreamConnectionFailed"
+          ],
+          "type": "object"
+        },
+        {
+          "const": "internalServerError"
+        },
+        {
+          "const": "unauthorized"
+        },
+        {
+          "const": "badRequest"
+        },
+        {
+          "const": "threadRollbackFailed"
+        },
+        {
+          "const": "sandboxError"
+        },
+        {
+          "properties": {
+            "responseStreamDisconnected": {
+              "properties": {
+                "httpStatusCode": {
+                  "nullable": {
+                    "bits": 16,
+                    "type": "uint"
+                  }
+                }
+              },
+              "required": [
+                "httpStatusCode"
+              ],
+              "type": "object"
+            }
+          },
+          "required": [
+            "responseStreamDisconnected"
+          ],
+          "type": "object"
+        },
+        {
+          "properties": {
+            "responseTooManyFailedAttempts": {
+              "properties": {
+                "httpStatusCode": {
+                  "nullable": {
+                    "bits": 16,
+                    "type": "uint"
+                  }
+                }
+              },
+              "required": [
+                "httpStatusCode"
+              ],
+              "type": "object"
+            }
+          },
+          "required": [
+            "responseTooManyFailedAttempts"
+          ],
+          "type": "object"
+        },
+        {
+          "properties": {
+            "activeTurnNotSteerable": {
+              "properties": {
+                "turnKind": {
+                  "ref": "NonSteerableTurnKind"
+                }
+              },
+              "required": [
+                "turnKind"
+              ],
+              "type": "object"
+            }
+          },
+          "required": [
+            "activeTurnNotSteerable"
+          ],
+          "type": "object"
+        },
+        {
+          "const": "other"
+        }
+      ]
+    },
+    "CodexFileChangeEventParams": {
+      "evidence": {
+        "line": 842,
+        "path": "codex-rs/analytics/src/events.rs"
+      },
+      "properties": {
+        "app_server_client": {
+          "ref": "CodexAppServerClientMetadata"
+        },
+        "cell_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "completed_at_ms": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "duration_ms": {
+          "nullable": {
+            "bits": 64,
+            "type": "uint"
+          }
+        },
+        "execution_duration_ms": {
+          "nullable": {
+            "bits": 64,
+            "type": "uint"
+          }
+        },
+        "failure_kind": {
+          "nullable": {
+            "ref": "ToolItemFailureKind"
+          }
+        },
+        "file_add_count": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "file_change_count": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "file_delete_count": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "file_move_count": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "file_update_count": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "final_approval_outcome": {
+          "ref": "FinalApprovalOutcome"
+        },
+        "guardian_review_count": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "item_id": {
+          "type": "string"
+        },
+        "originating_response_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "parent_call_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "parent_thread_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "requested_additional_permissions": {
+          "type": "boolean"
+        },
+        "requested_network_access": {
+          "type": "boolean"
+        },
+        "review_count": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "root_turn_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "runtime": {
+          "ref": "CodexRuntimeMetadata"
+        },
+        "session_id": {
+          "type": "string"
+        },
+        "started_at_ms": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "subagent_source": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "subsequent_response_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "terminal_status": {
+          "ref": "ToolItemTerminalStatus"
+        },
+        "thread_id": {
+          "type": "string"
+        },
+        "thread_source": {
+          "nullable": {
+            "ref": "ThreadSource"
+          }
+        },
+        "tool_event_type": {
+          "nullable": {
+            "ref": "ToolEventType"
+          }
+        },
+        "tool_name": {
+          "type": "string"
+        },
+        "turn_id": {
+          "type": "string"
+        },
+        "user_review_count": {
+          "bits": 64,
+          "type": "uint"
+        }
+      },
+      "required": [
+        "file_change_count",
+        "file_add_count",
+        "file_update_count",
+        "file_delete_count",
+        "file_move_count",
+        "thread_id",
+        "session_id",
+        "turn_id",
+        "root_turn_id",
+        "item_id",
+        "cell_id",
+        "parent_call_id",
+        "originating_response_id",
+        "subsequent_response_id",
+        "app_server_client",
+        "runtime",
+        "thread_source",
+        "subagent_source",
+        "parent_thread_id",
+        "tool_name",
+        "tool_event_type",
+        "started_at_ms",
+        "completed_at_ms",
+        "duration_ms",
+        "execution_duration_ms",
+        "review_count",
+        "guardian_review_count",
+        "user_review_count",
+        "final_approval_outcome",
+        "terminal_status",
+        "failure_kind",
+        "requested_additional_permissions",
+        "requested_network_access"
+      ],
+      "type": "object"
+    },
+    "CodexFileChangeEventRequest": {
+      "evidence": {
+        "line": 853,
+        "path": "codex-rs/analytics/src/events.rs"
+      },
+      "properties": {
+        "event_params": {
+          "ref": "CodexFileChangeEventParams"
+        },
+        "event_type": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "event_type",
+        "event_params"
+      ],
+      "type": "object"
+    },
+    "CodexGoalEventParams": {
+      "evidence": {
+        "line": 1047,
+        "path": "codex-rs/analytics/src/events.rs"
+      },
+      "properties": {
+        "app_server_client": {
+          "ref": "CodexAppServerClientMetadata"
+        },
+        "cumulative_time_accounted_seconds": {
+          "nullable": {
+            "bits": 64,
+            "type": "int"
+          }
+        },
+        "cumulative_tokens_accounted": {
+          "nullable": {
+            "bits": 64,
+            "type": "int"
+          }
+        },
+        "event_kind": {
+          "ref": "GoalEventKind"
+        },
+        "goal_id": {
+          "type": "string"
+        },
+        "goal_status": {
+          "ref": "ThreadGoalStatus"
+        },
+        "has_token_budget": {
+          "type": "boolean"
+        },
+        "parent_thread_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "runtime": {
+          "ref": "CodexRuntimeMetadata"
+        },
+        "session_id": {
+          "type": "string"
+        },
+        "subagent_source": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "thread_id": {
+          "type": "string"
+        },
+        "thread_source": {
+          "nullable": {
+            "ref": "ThreadSource"
+          }
+        },
+        "turn_id": {
+          "nullable": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "thread_id",
+        "session_id",
+        "turn_id",
+        "app_server_client",
+        "runtime",
+        "thread_source",
+        "subagent_source",
+        "parent_thread_id",
+        "goal_id",
+        "event_kind",
+        "goal_status",
+        "has_token_budget",
+        "cumulative_tokens_accounted",
+        "cumulative_time_accounted_seconds"
+      ],
+      "type": "object"
+    },
+    "CodexGoalEventRequest": {
+      "evidence": {
+        "line": 1065,
+        "path": "codex-rs/analytics/src/events.rs"
+      },
+      "properties": {
+        "event_params": {
+          "ref": "CodexGoalEventParams"
+        },
+        "event_type": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "event_type",
+        "event_params"
+      ],
+      "type": "object"
+    },
+    "CodexHookRunEventRequest": {
+      "evidence": {
+        "line": 1005,
+        "path": "codex-rs/analytics/src/events.rs"
+      },
+      "properties": {
+        "event_params": {
+          "ref": "CodexHookRunMetadata"
+        },
+        "event_type": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "event_type",
+        "event_params"
+      ],
+      "type": "object"
+    },
+    "CodexHookRunMetadata": {
+      "evidence": {
+        "line": 992,
+        "path": "codex-rs/analytics/src/events.rs"
+      },
+      "properties": {
+        "execution_mode": {
+          "nullable": {
+            "ref": "HookExecutionMode"
+          }
+        },
+        "handler_type": {
+          "nullable": {
+            "ref": "HookHandlerType"
+          }
+        },
+        "hook_name": {
+          "nullable": {
+            "oneOf": [
+              {
+                "const": "PreToolUse"
+              },
+              {
+                "const": "PermissionRequest"
+              },
+              {
+                "const": "PostToolUse"
+              },
+              {
+                "const": "PreCompact"
+              },
+              {
+                "const": "PostCompact"
+              },
+              {
+                "const": "SessionStart"
+              },
+              {
+                "const": "SessionEnd"
+              },
+              {
+                "const": "UserPromptSubmit"
+              },
+              {
+                "const": "SubagentStart"
+              },
+              {
+                "const": "SubagentStop"
+              },
+              {
+                "const": "Stop"
+              },
+              {
+                "const": "Interrupt"
+              }
+            ]
+          }
+        },
+        "hook_source": {
+          "nullable": {
+            "oneOf": [
+              {
+                "const": "system"
+              },
+              {
+                "const": "user"
+              },
+              {
+                "const": "project"
+              },
+              {
+                "const": "mdm"
+              },
+              {
+                "const": "session_flags"
+              },
+              {
+                "const": "plugin"
+              },
+              {
+                "const": "cloud_requirements"
+              },
+              {
+                "const": "cloud_managed_config"
+              },
+              {
+                "const": "legacy_managed_config_file"
+              },
+              {
+                "const": "legacy_managed_config_mdm"
+              },
+              {
+                "const": "unknown"
+              }
+            ]
+          }
+        },
+        "model_slug": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "product_client_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "status": {
+          "nullable": {
+            "ref": "HookRunStatus"
+          }
+        },
+        "thread_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "turn_id": {
+          "nullable": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "thread_id",
+        "turn_id",
+        "product_client_id",
+        "model_slug",
+        "hook_name",
+        "hook_source",
+        "handler_type",
+        "execution_mode",
+        "status"
+      ],
+      "type": "object"
+    },
+    "CodexImageGenerationEventParams": {
+      "evidence": {
+        "line": 944,
+        "path": "codex-rs/analytics/src/events.rs"
+      },
+      "properties": {
+        "app_server_client": {
+          "ref": "CodexAppServerClientMetadata"
+        },
+        "cell_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "completed_at_ms": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "duration_ms": {
+          "nullable": {
+            "bits": 64,
+            "type": "uint"
+          }
+        },
+        "execution_duration_ms": {
+          "nullable": {
+            "bits": 64,
+            "type": "uint"
+          }
+        },
+        "failure_kind": {
+          "nullable": {
+            "ref": "ToolItemFailureKind"
+          }
+        },
+        "final_approval_outcome": {
+          "ref": "FinalApprovalOutcome"
+        },
+        "generation_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "guardian_review_count": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "imagegen_request_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "item_id": {
+          "type": "string"
+        },
+        "originating_response_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "parent_call_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "parent_thread_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "requested_additional_permissions": {
+          "type": "boolean"
+        },
+        "requested_network_access": {
+          "type": "boolean"
+        },
+        "review_count": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "revised_prompt_present": {
+          "type": "boolean"
+        },
+        "root_turn_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "runtime": {
+          "ref": "CodexRuntimeMetadata"
+        },
+        "saved_path_present": {
+          "type": "boolean"
+        },
+        "session_id": {
+          "type": "string"
+        },
+        "started_at_ms": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "subagent_source": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "subsequent_response_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "terminal_status": {
+          "ref": "ToolItemTerminalStatus"
+        },
+        "thread_id": {
+          "type": "string"
+        },
+        "thread_source": {
+          "nullable": {
+            "ref": "ThreadSource"
+          }
+        },
+        "tool_event_type": {
+          "nullable": {
+            "ref": "ToolEventType"
+          }
+        },
+        "tool_name": {
+          "type": "string"
+        },
+        "transparent_background": {
+          "nullable": {
+            "type": "boolean"
+          }
+        },
+        "turn_id": {
+          "type": "string"
+        },
+        "user_review_count": {
+          "bits": 64,
+          "type": "uint"
+        }
+      },
+      "required": [
+        "revised_prompt_present",
+        "saved_path_present",
+        "transparent_background",
+        "imagegen_request_id",
+        "generation_id",
+        "thread_id",
+        "session_id",
+        "turn_id",
+        "root_turn_id",
+        "item_id",
+        "cell_id",
+        "parent_call_id",
+        "originating_response_id",
+        "subsequent_response_id",
+        "app_server_client",
+        "runtime",
+        "thread_source",
+        "subagent_source",
+        "parent_thread_id",
+        "tool_name",
+        "tool_event_type",
+        "started_at_ms",
+        "completed_at_ms",
+        "duration_ms",
+        "execution_duration_ms",
+        "review_count",
+        "guardian_review_count",
+        "user_review_count",
+        "final_approval_outcome",
+        "terminal_status",
+        "failure_kind",
+        "requested_additional_permissions",
+        "requested_network_access"
+      ],
+      "type": "object"
+    },
+    "CodexImageGenerationEventRequest": {
+      "evidence": {
+        "line": 955,
+        "path": "codex-rs/analytics/src/events.rs"
+      },
+      "properties": {
+        "event_params": {
+          "ref": "CodexImageGenerationEventParams"
+        },
+        "event_type": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "event_type",
+        "event_params"
+      ],
+      "type": "object"
+    },
+    "CodexMcpToolCallEventParams": {
+      "evidence": {
+        "line": 859,
+        "path": "codex-rs/analytics/src/events.rs"
+      },
+      "properties": {
+        "app_server_client": {
+          "ref": "CodexAppServerClientMetadata"
+        },
+        "cell_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "completed_at_ms": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "connector_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "duration_ms": {
+          "nullable": {
+            "bits": 64,
+            "type": "uint"
+          }
+        },
+        "elicitation_type": {
+          "nullable": {
+            "ref": "ElicitationType"
+          }
+        },
+        "execution_duration_ms": {
+          "nullable": {
+            "bits": 64,
+            "type": "uint"
+          }
+        },
+        "failure_kind": {
+          "nullable": {
+            "ref": "ToolItemFailureKind"
+          }
+        },
+        "final_approval_outcome": {
+          "ref": "FinalApprovalOutcome"
+        },
+        "guardian_review_count": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "item_id": {
+          "type": "string"
+        },
+        "mcp_error_present": {
+          "type": "boolean"
+        },
+        "mcp_server_name": {
+          "type": "string"
+        },
+        "mcp_tool_name": {
+          "type": "string"
+        },
+        "originating_response_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "parent_call_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "parent_thread_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "plugin_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "requested_additional_permissions": {
+          "type": "boolean"
+        },
+        "requested_network_access": {
+          "type": "boolean"
+        },
+        "review_count": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "root_turn_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "runtime": {
+          "ref": "CodexRuntimeMetadata"
+        },
+        "session_id": {
+          "type": "string"
+        },
+        "started_at_ms": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "subagent_source": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "subsequent_response_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "terminal_status": {
+          "ref": "ToolItemTerminalStatus"
+        },
+        "thread_id": {
+          "type": "string"
+        },
+        "thread_source": {
+          "nullable": {
+            "ref": "ThreadSource"
+          }
+        },
+        "tool_event_type": {
+          "nullable": {
+            "ref": "ToolEventType"
+          }
+        },
+        "tool_name": {
+          "type": "string"
+        },
+        "turn_id": {
+          "type": "string"
+        },
+        "user_review_count": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "voice_session_id": {
+          "nullable": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "mcp_server_name",
+        "mcp_tool_name",
+        "mcp_error_present",
+        "plugin_id",
+        "connector_id",
+        "voice_session_id",
+        "elicitation_type",
+        "thread_id",
+        "session_id",
+        "turn_id",
+        "root_turn_id",
+        "item_id",
+        "cell_id",
+        "parent_call_id",
+        "originating_response_id",
+        "subsequent_response_id",
+        "app_server_client",
+        "runtime",
+        "thread_source",
+        "subagent_source",
+        "parent_thread_id",
+        "tool_name",
+        "tool_event_type",
+        "started_at_ms",
+        "completed_at_ms",
+        "duration_ms",
+        "execution_duration_ms",
+        "review_count",
+        "guardian_review_count",
+        "user_review_count",
+        "final_approval_outcome",
+        "terminal_status",
+        "failure_kind",
+        "requested_additional_permissions",
+        "requested_network_access"
+      ],
+      "type": "object"
+    },
+    "CodexMcpToolCallEventRequest": {
+      "evidence": {
+        "line": 872,
+        "path": "codex-rs/analytics/src/events.rs"
+      },
+      "properties": {
+        "event_params": {
+          "ref": "CodexMcpToolCallEventParams"
+        },
+        "event_type": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "event_type",
+        "event_params"
+      ],
+      "type": "object"
+    },
+    "CodexOnboardingExternalAgentImportCompleteEventRequest": {
+      "evidence": {
+        "line": 1254,
+        "path": "codex-rs/analytics/src/events.rs"
+      },
+      "properties": {
+        "event_params": {
+          "ref": "CodexOnboardingExternalAgentImportCompleteMetadata"
+        },
+        "event_type": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "event_type",
+        "event_params"
+      ],
+      "type": "object"
+    },
+    "CodexOnboardingExternalAgentImportCompleteMetadata": {
+      "evidence": {
+        "line": 1242,
+        "path": "codex-rs/analytics/src/events.rs"
+      },
+      "properties": {
+        "failed_count": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "import_id": {
+          "type": "string"
+        },
+        "product_client_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "provider_id": {
+          "type": "string"
+        },
+        "source": {
+          "type": "string"
+        },
+        "success_count": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "import_id",
+        "source",
+        "provider_id",
+        "type",
+        "success_count",
+        "failed_count",
+        "product_client_id"
+      ],
+      "type": "object"
+    },
+    "CodexOnboardingExternalAgentImportFailureEventRequest": {
+      "evidence": {
+        "line": 1273,
+        "path": "codex-rs/analytics/src/events.rs"
+      },
+      "properties": {
+        "event_params": {
+          "ref": "CodexOnboardingExternalAgentImportFailureMetadata"
+        },
+        "event_type": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "event_type",
+        "event_params"
+      ],
+      "type": "object"
+    },
+    "CodexOnboardingExternalAgentImportFailureMetadata": {
+      "evidence": {
+        "line": 1260,
+        "path": "codex-rs/analytics/src/events.rs"
+      },
+      "properties": {
+        "error_type": {
+          "type": "string"
+        },
+        "failure_stage": {
+          "type": "string"
+        },
+        "import_id": {
+          "type": "string"
+        },
+        "product_client_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "provider_id": {
+          "type": "string"
+        },
+        "source": {
+          "type": "string"
+        },
+        "sub_error_type": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "import_id",
+        "source",
+        "provider_id",
+        "type",
+        "failure_stage",
+        "error_type",
+        "sub_error_type",
+        "product_client_id"
+      ],
+      "type": "object"
+    },
+    "CodexPluginEventRequest": {
+      "evidence": {
+        "line": 1221,
+        "path": "codex-rs/analytics/src/events.rs"
+      },
+      "properties": {
+        "event_params": {
+          "ref": "CodexPluginMetadata"
+        },
+        "event_type": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "event_type",
+        "event_params"
+      ],
+      "type": "object"
+    },
+    "CodexPluginInstallFailedEventRequest": {
+      "evidence": {
+        "line": 1236,
+        "path": "codex-rs/analytics/src/events.rs"
+      },
+      "properties": {
+        "event_params": {
+          "ref": "CodexPluginInstallFailedMetadata"
+        },
+        "event_type": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "event_type",
+        "event_params"
+      ],
+      "type": "object"
+    },
+    "CodexPluginInstallFailedMetadata": {
+      "evidence": {
+        "line": 1227,
+        "path": "codex-rs/analytics/src/events.rs"
+      },
+      "properties": {
+        "connector_ids": {
+          "nullable": {
+            "array": {
+              "type": "string"
+            }
+          }
+        },
+        "error_type": {
+          "type": "string"
+        },
+        "has_skills": {
+          "nullable": {
+            "type": "boolean"
+          }
+        },
+        "marketplace_name": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "mcp_server_count": {
+          "nullable": {
+            "bits": 64,
+            "type": "uint"
+          }
+        },
+        "plugin_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "plugin_name": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "product_client_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "remote_plugin_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "source": {
+          "ref": "PluginInstallSource"
+        },
+        "sub_error_type": {
+          "nullable": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "source",
+        "error_type",
+        "sub_error_type",
+        "plugin_id",
+        "remote_plugin_id",
+        "plugin_name",
+        "marketplace_name",
+        "has_skills",
+        "mcp_server_count",
+        "connector_ids",
+        "product_client_id"
+      ],
+      "type": "object"
+    },
+    "CodexPluginInstallRequestedEventRequest": {
+      "evidence": {
+        "line": 1215,
+        "path": "codex-rs/analytics/src/events.rs"
+      },
+      "properties": {
+        "event_params": {
+          "ref": "CodexPluginInstallRequestedMetadata"
+        },
+        "event_type": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "event_type",
+        "event_params"
+      ],
+      "type": "object"
+    },
+    "CodexPluginInstallRequestedMetadata": {
+      "evidence": {
+        "line": 1204,
+        "path": "codex-rs/analytics/src/events.rs"
+      },
+      "properties": {
+        "model_slug": {
+          "type": "string"
+        },
+        "plugins": {
+          "array": {
+            "ref": "CodexPluginInstallRequestedPluginMetadata"
+          }
+        },
+        "product_client_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "source": {
+          "ref": "PluginInstallRequestSource"
+        },
+        "suggestion_id": {
+          "type": "string"
+        },
+        "thread_id": {
+          "type": "string"
+        },
+        "turn_id": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "suggestion_id",
+        "plugins",
+        "source",
+        "thread_id",
+        "turn_id",
+        "model_slug",
+        "product_client_id"
+      ],
+      "type": "object"
+    },
+    "CodexPluginInstallRequestedPluginMetadata": {
+      "evidence": {
+        "line": 1196,
+        "path": "codex-rs/analytics/src/events.rs"
+      },
+      "properties": {
+        "connector_ids": {
+          "array": {
+            "type": "string"
+          }
+        },
+        "plugin_id": {
+          "type": "string"
+        },
+        "plugin_name": {
+          "type": "string"
+        },
+        "remote_plugin_id": {
+          "nullable": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "plugin_id",
+        "remote_plugin_id",
+        "plugin_name",
+        "connector_ids"
+      ],
+      "type": "object"
+    },
+    "CodexPluginMeasurementEventParams": {
+      "evidence": {
+        "line": 820,
+        "path": "codex-rs/analytics/src/events.rs"
+      },
+      "properties": {
+        "dimensions": {
+          "nullable": {
+            "map": {
+              "type": "string"
+            }
+          }
+        },
+        "execution_id": {
+          "type": "string"
+        },
+        "item_id": {
+          "type": "string"
+        },
+        "measurement_name": {
+          "type": "string"
+        },
+        "model_slug": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "number_value": {
+          "type": "number"
+        },
+        "operation": {
+          "type": "string"
+        },
+        "originator": {
+          "type": "string"
+        },
+        "plugin_id": {
+          "type": "string"
+        },
+        "reasoning_effort": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "thread_id": {
+          "type": "string"
+        },
+        "turn_id": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "thread_id",
+        "turn_id",
+        "item_id",
+        "originator",
+        "model_slug",
+        "reasoning_effort",
+        "plugin_id",
+        "execution_id",
+        "operation",
+        "measurement_name",
+        "number_value",
+        "dimensions"
+      ],
+      "type": "object"
+    },
+    "CodexPluginMeasurementEventRequest": {
+      "evidence": {
+        "line": 836,
+        "path": "codex-rs/analytics/src/events.rs"
+      },
+      "properties": {
+        "event_params": {
+          "ref": "CodexPluginMeasurementEventParams"
+        },
+        "event_type": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "event_type",
+        "event_params"
+      ],
+      "type": "object"
+    },
+    "CodexPluginMetadata": {
+      "evidence": {
+        "line": 1174,
+        "path": "codex-rs/analytics/src/events.rs"
+      },
+      "properties": {
+        "connector_ids": {
+          "nullable": {
+            "array": {
+              "type": "string"
+            }
+          }
+        },
+        "has_skills": {
+          "nullable": {
+            "type": "boolean"
+          }
+        },
+        "marketplace_name": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "mcp_server_count": {
+          "nullable": {
+            "bits": 64,
+            "type": "uint"
+          }
+        },
+        "plugin_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "plugin_name": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "product_client_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "remote_plugin_id": {
+          "nullable": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "plugin_id",
+        "remote_plugin_id",
+        "plugin_name",
+        "marketplace_name",
+        "has_skills",
+        "mcp_server_count",
+        "connector_ids",
+        "product_client_id"
+      ],
+      "type": "object"
+    },
+    "CodexPluginUsedEventRequest": {
+      "evidence": {
+        "line": 1279,
+        "path": "codex-rs/analytics/src/events.rs"
+      },
+      "properties": {
+        "event_params": {
+          "ref": "CodexPluginUsedMetadata"
+        },
+        "event_type": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "event_type",
+        "event_params"
+      ],
+      "type": "object"
+    },
+    "CodexPluginUsedMetadata": {
+      "evidence": {
+        "line": 1186,
+        "path": "codex-rs/analytics/src/events.rs"
+      },
+      "properties": {
+        "connector_ids": {
+          "nullable": {
+            "array": {
+              "type": "string"
+            }
+          }
+        },
+        "has_skills": {
+          "nullable": {
+            "type": "boolean"
+          }
+        },
+        "marketplace_name": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "mcp_server_count": {
+          "nullable": {
+            "bits": 64,
+            "type": "uint"
+          }
+        },
+        "mcp_server_names": {
+          "nullable": {
+            "array": {
+              "type": "string"
+            }
+          }
+        },
+        "model_slug": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "plugin_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "plugin_name": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "product_client_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "remote_plugin_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "thread_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "turn_id": {
+          "nullable": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "mcp_server_names",
+        "thread_id",
+        "turn_id",
+        "model_slug",
+        "plugin_id",
+        "remote_plugin_id",
+        "plugin_name",
+        "marketplace_name",
+        "has_skills",
+        "mcp_server_count",
+        "connector_ids",
+        "product_client_id"
+      ],
+      "type": "object"
+    },
+    "CodexReviewEventParams": {
+      "evidence": {
+        "line": 759,
+        "path": "codex-rs/analytics/src/events.rs"
+      },
+      "properties": {
+        "app_server_client": {
+          "ref": "CodexAppServerClientMetadata"
+        },
+        "completed_at_ms": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "duration_ms": {
+          "nullable": {
+            "bits": 64,
+            "type": "uint"
+          }
+        },
+        "item_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "parent_thread_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "resolution": {
+          "ref": "ReviewResolution"
+        },
+        "review_id": {
+          "type": "string"
+        },
+        "reviewer": {
+          "ref": "Reviewer"
+        },
+        "runtime": {
+          "ref": "CodexRuntimeMetadata"
+        },
+        "started_at_ms": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "status": {
+          "ref": "ReviewStatus"
+        },
+        "subagent_source": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "subject_kind": {
+          "ref": "ReviewSubjectKind"
+        },
+        "subject_name": {
+          "type": "string"
+        },
+        "thread_id": {
+          "type": "string"
+        },
+        "thread_source": {
+          "nullable": {
+            "ref": "ThreadSource"
+          }
+        },
+        "trigger": {
+          "ref": "ReviewTrigger"
+        },
+        "turn_id": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "thread_id",
+        "turn_id",
+        "item_id",
+        "review_id",
+        "app_server_client",
+        "runtime",
+        "thread_source",
+        "subagent_source",
+        "parent_thread_id",
+        "subject_kind",
+        "subject_name",
+        "reviewer",
+        "trigger",
+        "status",
+        "resolution",
+        "started_at_ms",
+        "completed_at_ms",
+        "duration_ms"
+      ],
+      "type": "object"
+    },
+    "CodexReviewEventRequest": {
+      "evidence": {
+        "line": 781,
+        "path": "codex-rs/analytics/src/events.rs"
+      },
+      "properties": {
+        "event_params": {
+          "ref": "CodexReviewEventParams"
+        },
+        "event_type": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "event_type",
+        "event_params"
+      ],
+      "type": "object"
+    },
+    "CodexRuntimeMetadata": {
+      "evidence": {
+        "line": 231,
+        "path": "codex-rs/analytics/src/events.rs"
+      },
+      "properties": {
+        "codex_rs_version": {
+          "type": "string"
+        },
+        "runtime_arch": {
+          "type": "string"
+        },
+        "runtime_os": {
+          "type": "string"
+        },
+        "runtime_os_version": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "codex_rs_version",
+        "runtime_os",
+        "runtime_os_version",
+        "runtime_arch"
+      ],
+      "type": "object"
+    },
+    "CodexToolItemEventBase": {
+      "evidence": {
+        "line": 672,
+        "path": "codex-rs/analytics/src/events.rs"
+      },
+      "properties": {
+        "app_server_client": {
+          "ref": "CodexAppServerClientMetadata"
+        },
+        "cell_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "completed_at_ms": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "duration_ms": {
+          "nullable": {
+            "bits": 64,
+            "type": "uint"
+          }
+        },
+        "execution_duration_ms": {
+          "nullable": {
+            "bits": 64,
+            "type": "uint"
+          }
+        },
+        "failure_kind": {
+          "nullable": {
+            "ref": "ToolItemFailureKind"
+          }
+        },
+        "final_approval_outcome": {
+          "ref": "FinalApprovalOutcome"
+        },
+        "guardian_review_count": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "item_id": {
+          "type": "string"
+        },
+        "originating_response_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "parent_call_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "parent_thread_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "requested_additional_permissions": {
+          "type": "boolean"
+        },
+        "requested_network_access": {
+          "type": "boolean"
+        },
+        "review_count": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "root_turn_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "runtime": {
+          "ref": "CodexRuntimeMetadata"
+        },
+        "session_id": {
+          "type": "string"
+        },
+        "started_at_ms": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "subagent_source": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "subsequent_response_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "terminal_status": {
+          "ref": "ToolItemTerminalStatus"
+        },
+        "thread_id": {
+          "type": "string"
+        },
+        "thread_source": {
+          "nullable": {
+            "ref": "ThreadSource"
+          }
+        },
+        "tool_event_type": {
+          "nullable": {
+            "ref": "ToolEventType"
+          }
+        },
+        "tool_name": {
+          "type": "string"
+        },
+        "turn_id": {
+          "type": "string"
+        },
+        "user_review_count": {
+          "bits": 64,
+          "type": "uint"
+        }
+      },
+      "required": [
+        "thread_id",
+        "session_id",
+        "turn_id",
+        "root_turn_id",
+        "item_id",
+        "cell_id",
+        "parent_call_id",
+        "originating_response_id",
+        "subsequent_response_id",
+        "app_server_client",
+        "runtime",
+        "thread_source",
+        "subagent_source",
+        "parent_thread_id",
+        "tool_name",
+        "tool_event_type",
+        "started_at_ms",
+        "completed_at_ms",
+        "duration_ms",
+        "execution_duration_ms",
+        "review_count",
+        "guardian_review_count",
+        "user_review_count",
+        "final_approval_outcome",
+        "terminal_status",
+        "failure_kind",
+        "requested_additional_permissions",
+        "requested_network_access"
+      ],
+      "type": "object"
+    },
+    "CodexTurnEventParams": {
+      "evidence": {
+        "line": 1071,
+        "path": "codex-rs/analytics/src/events.rs"
+      },
+      "properties": {
+        "active_plugin_ids_at_turn_start": {
+          "nullable": {
+            "array": {
+              "type": "string"
+            }
+          }
+        },
+        "after_last_sampling_ms": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "app_server_client": {
+          "ref": "CodexAppServerClientMetadata"
+        },
+        "approval_policy": {
+          "type": "string"
+        },
+        "approvals_reviewer": {
+          "type": "string"
+        },
+        "before_first_sampling_ms": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "between_sampling_overhead_ms": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "cache_write_input_tokens": {
+          "nullable": {
+            "bits": 64,
+            "type": "int"
+          }
+        },
+        "cached_input_tokens": {
+          "nullable": {
+            "bits": 64,
+            "type": "int"
+          }
+        },
+        "codex_error_http_status_code": {
+          "nullable": {
+            "bits": 16,
+            "type": "uint"
+          }
+        },
+        "codex_error_kind": {
+          "nullable": {
+            "ref": "CodexErrKind"
+          }
+        },
+        "codex_turn_source": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "collaboration_mode": {
+          "nullable": {
+            "oneOf": [
+              {
+                "const": "plan"
+              },
+              {
+                "const": "default"
+              }
+            ]
+          }
+        },
+        "compaction_ms": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "completed_at": {
+          "nullable": {
+            "bits": 64,
+            "type": "uint"
+          }
+        },
+        "duration_ms": {
+          "nullable": {
+            "bits": 64,
+            "type": "uint"
+          }
+        },
+        "dynamic_tool_call_count": {
+          "nullable": {
+            "bits": 64,
+            "type": "uint"
+          }
+        },
+        "ephemeral": {
+          "type": "boolean"
+        },
+        "explicit_client_interrupt_requested_at_ms": {
+          "nullable": {
+            "bits": 64,
+            "type": "uint"
+          }
+        },
+        "file_change_count": {
+          "nullable": {
+            "bits": 64,
+            "type": "uint"
+          }
+        },
+        "guardian_v2_enabled": {
+          "type": "boolean"
+        },
+        "image_generation_count": {
+          "nullable": {
+            "bits": 64,
+            "type": "uint"
+          }
+        },
+        "image_preparations": {
+          "array": {
+            "ref": "ImagePreparationMetadata"
+          }
+        },
+        "initialization_mode": {
+          "ref": "ThreadInitializationMode"
+        },
+        "input_tokens": {
+          "nullable": {
+            "bits": 64,
+            "type": "int"
+          }
+        },
+        "is_first_turn": {
+          "type": "boolean"
+        },
+        "mcp_tool_call_count": {
+          "nullable": {
+            "bits": 64,
+            "type": "uint"
+          }
+        },
+        "model": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "model_provider": {
+          "type": "string"
+        },
+        "num_input_images": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "output_tokens": {
+          "nullable": {
+            "bits": 64,
+            "type": "int"
+          }
+        },
+        "parent_thread_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "personality": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "reasoning_effort": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "reasoning_output_tokens": {
+          "nullable": {
+            "bits": 64,
+            "type": "int"
+          }
+        },
+        "reasoning_summary": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "root_turn_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "runtime": {
+          "ref": "CodexRuntimeMetadata"
+        },
+        "sampling_ms": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "sampling_request_count": {
+          "bits": 32,
+          "type": "uint"
+        },
+        "sampling_retry_count": {
+          "bits": 32,
+          "type": "uint"
+        },
+        "sandbox_network_access": {
+          "type": "boolean"
+        },
+        "sandbox_policy": {
+          "nullable": {
+            "oneOf": [
+              {
+                "const": "full_access"
+              },
+              {
+                "const": "external_sandbox"
+              },
+              {
+                "const": "read_only"
+              },
+              {
+                "const": "workspace_write"
+              }
+            ]
+          }
+        },
+        "service_tier": {
+          "type": "string"
+        },
+        "session_id": {
+          "type": "string"
+        },
+        "shell_command_count": {
+          "nullable": {
+            "bits": 64,
+            "type": "uint"
+          }
+        },
+        "started_at": {
+          "nullable": {
+            "bits": 64,
+            "type": "uint"
+          }
+        },
+        "status": {
+          "nullable": {
+            "ref": "TurnStatus"
+          }
+        },
+        "steer_count": {
+          "nullable": {
+            "bits": 64,
+            "type": "uint"
+          }
+        },
+        "subagent_source": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "subagent_tool_call_count": {
+          "nullable": {
+            "bits": 64,
+            "type": "uint"
+          }
+        },
+        "submission_type": {
+          "nullable": {
+            "ref": "TurnSubmissionType"
+          }
+        },
+        "thread_id": {
+          "type": "string"
+        },
+        "thread_source": {
+          "nullable": {
+            "ref": "ThreadSource"
+          }
+        },
+        "tool_blocking_ms": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "total_tokens": {
+          "nullable": {
+            "bits": 64,
+            "type": "int"
+          }
+        },
+        "total_tool_call_count": {
+          "nullable": {
+            "bits": 64,
+            "type": "uint"
+          }
+        },
+        "turn_error": {
+          "nullable": {
+            "ref": "CodexErrorInfo"
+          }
+        },
+        "turn_id": {
+          "type": "string"
+        },
+        "turn_trigger": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "usage_limit_window_minutes": {
+          "nullable": {
+            "bits": 16,
+            "type": "uint"
+          }
+        },
+        "voice_session_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "web_search_count": {
+          "nullable": {
+            "bits": 64,
+            "type": "uint"
+          }
+        },
+        "workspace_kind": {
+          "nullable": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "thread_id",
+        "session_id",
+        "turn_id",
+        "active_plugin_ids_at_turn_start",
+        "voice_session_id",
+        "root_turn_id",
+        "turn_trigger",
+        "codex_turn_source",
+        "submission_type",
+        "app_server_client",
+        "runtime",
+        "ephemeral",
+        "thread_source",
+        "initialization_mode",
+        "subagent_source",
+        "parent_thread_id",
+        "model",
+        "model_provider",
+        "sandbox_policy",
+        "reasoning_effort",
+        "reasoning_summary",
+        "service_tier",
+        "approval_policy",
+        "approvals_reviewer",
+        "guardian_v2_enabled",
+        "sandbox_network_access",
+        "collaboration_mode",
+        "personality",
+        "workspace_kind",
+        "num_input_images",
+        "image_preparations",
+        "is_first_turn",
+        "status",
+        "explicit_client_interrupt_requested_at_ms",
+        "turn_error",
+        "codex_error_kind",
+        "codex_error_http_status_code",
+        "usage_limit_window_minutes",
+        "steer_count",
+        "total_tool_call_count",
+        "shell_command_count",
+        "file_change_count",
+        "mcp_tool_call_count",
+        "dynamic_tool_call_count",
+        "subagent_tool_call_count",
+        "web_search_count",
+        "image_generation_count",
+        "input_tokens",
+        "cached_input_tokens",
+        "cache_write_input_tokens",
+        "output_tokens",
+        "reasoning_output_tokens",
+        "total_tokens",
+        "before_first_sampling_ms",
+        "sampling_ms",
+        "compaction_ms",
+        "between_sampling_overhead_ms",
+        "tool_blocking_ms",
+        "after_last_sampling_ms",
+        "sampling_request_count",
+        "sampling_retry_count",
+        "duration_ms",
+        "started_at",
+        "completed_at"
+      ],
+      "type": "object"
+    },
+    "CodexTurnEventRequest": {
+      "evidence": {
+        "line": 1145,
+        "path": "codex-rs/analytics/src/events.rs"
+      },
+      "properties": {
+        "event_params": {
+          "ref": "CodexTurnEventParams"
+        },
+        "event_type": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "event_type",
+        "event_params"
+      ],
+      "type": "object"
+    },
+    "CodexTurnSteerEventParams": {
+      "evidence": {
+        "line": 1151,
+        "path": "codex-rs/analytics/src/events.rs"
+      },
+      "properties": {
+        "accepted_turn_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "app_server_client": {
+          "ref": "CodexAppServerClientMetadata"
+        },
+        "created_at": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "expected_turn_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "num_input_images": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "parent_thread_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "rejection_reason": {
+          "nullable": {
+            "ref": "TurnSteerRejectionReason"
+          }
+        },
+        "result": {
+          "ref": "TurnSteerResult"
+        },
+        "runtime": {
+          "ref": "CodexRuntimeMetadata"
+        },
+        "session_id": {
+          "type": "string"
+        },
+        "subagent_source": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "thread_id": {
+          "type": "string"
+        },
+        "thread_source": {
+          "nullable": {
+            "ref": "ThreadSource"
+          }
+        }
+      },
+      "required": [
+        "thread_id",
+        "session_id",
+        "expected_turn_id",
+        "accepted_turn_id",
+        "app_server_client",
+        "runtime",
+        "thread_source",
+        "subagent_source",
+        "parent_thread_id",
+        "num_input_images",
+        "result",
+        "rejection_reason",
+        "created_at"
+      ],
+      "type": "object"
+    },
+    "CodexTurnSteerEventRequest": {
+      "evidence": {
+        "line": 1168,
+        "path": "codex-rs/analytics/src/events.rs"
+      },
+      "properties": {
+        "event_params": {
+          "ref": "CodexTurnSteerEventParams"
+        },
+        "event_type": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "event_type",
+        "event_params"
+      ],
+      "type": "object"
+    },
+    "CodexWebSearchEventParams": {
+      "evidence": {
+        "line": 929,
+        "path": "codex-rs/analytics/src/events.rs"
+      },
+      "properties": {
+        "app_server_client": {
+          "ref": "CodexAppServerClientMetadata"
+        },
+        "cell_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "completed_at_ms": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "duration_ms": {
+          "nullable": {
+            "bits": 64,
+            "type": "uint"
+          }
+        },
+        "execution_duration_ms": {
+          "nullable": {
+            "bits": 64,
+            "type": "uint"
+          }
+        },
+        "failure_kind": {
+          "nullable": {
+            "ref": "ToolItemFailureKind"
+          }
+        },
+        "final_approval_outcome": {
+          "ref": "FinalApprovalOutcome"
+        },
+        "guardian_review_count": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "item_id": {
+          "type": "string"
+        },
+        "originating_response_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "parent_call_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "parent_thread_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "query_count": {
+          "nullable": {
+            "bits": 64,
+            "type": "uint"
+          }
+        },
+        "query_present": {
+          "type": "boolean"
+        },
+        "requested_additional_permissions": {
+          "type": "boolean"
+        },
+        "requested_network_access": {
+          "type": "boolean"
+        },
+        "review_count": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "root_turn_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "runtime": {
+          "ref": "CodexRuntimeMetadata"
+        },
+        "session_id": {
+          "type": "string"
+        },
+        "started_at_ms": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "subagent_source": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "subsequent_response_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "terminal_status": {
+          "ref": "ToolItemTerminalStatus"
+        },
+        "thread_id": {
+          "type": "string"
+        },
+        "thread_source": {
+          "nullable": {
+            "ref": "ThreadSource"
+          }
+        },
+        "tool_event_type": {
+          "nullable": {
+            "ref": "ToolEventType"
+          }
+        },
+        "tool_name": {
+          "type": "string"
+        },
+        "turn_id": {
+          "type": "string"
+        },
+        "user_review_count": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "web_search_action": {
+          "nullable": {
+            "ref": "WebSearchActionKind"
+          }
+        }
+      },
+      "required": [
+        "web_search_action",
+        "query_present",
+        "query_count",
+        "thread_id",
+        "session_id",
+        "turn_id",
+        "root_turn_id",
+        "item_id",
+        "cell_id",
+        "parent_call_id",
+        "originating_response_id",
+        "subsequent_response_id",
+        "app_server_client",
+        "runtime",
+        "thread_source",
+        "subagent_source",
+        "parent_thread_id",
+        "tool_name",
+        "tool_event_type",
+        "started_at_ms",
+        "completed_at_ms",
+        "duration_ms",
+        "execution_duration_ms",
+        "review_count",
+        "guardian_review_count",
+        "user_review_count",
+        "final_approval_outcome",
+        "terminal_status",
+        "failure_kind",
+        "requested_additional_permissions",
+        "requested_network_access"
+      ],
+      "type": "object"
+    },
+    "CodexWebSearchEventRequest": {
+      "evidence": {
+        "line": 938,
+        "path": "codex-rs/analytics/src/events.rs"
+      },
+      "properties": {
+        "event_params": {
+          "ref": "CodexWebSearchEventParams"
+        },
+        "event_type": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "event_type",
+        "event_params"
+      ],
+      "type": "object"
+    },
+    "CommandExecutionSource": {
+      "oneOf": [
+        {
+          "const": "agent"
+        },
+        {
+          "const": "userShell"
+        },
+        {
+          "const": "unifiedExecStartup"
+        },
+        {
+          "const": "unifiedExecInteraction"
+        }
+      ]
+    },
+    "CompactionImplementation": {
+      "oneOf": [
+        {
+          "const": "responses"
+        },
+        {
+          "const": "responses_compaction_v2"
+        }
+      ]
+    },
+    "CompactionPhase": {
+      "oneOf": [
+        {
+          "const": "standalone_turn"
+        },
+        {
+          "const": "pre_turn"
+        },
+        {
+          "const": "mid_turn"
+        },
+        {
+          "const": "post_turn"
+        }
+      ]
+    },
+    "CompactionReason": {
+      "oneOf": [
+        {
+          "const": "user_requested"
+        },
+        {
+          "const": "context_limit"
+        },
+        {
+          "const": "model_downshift"
+        },
+        {
+          "const": "comp_hash_changed"
+        }
+      ]
+    },
+    "CompactionStatus": {
+      "oneOf": [
+        {
+          "const": "completed"
+        },
+        {
+          "const": "failed"
+        },
+        {
+          "const": "interrupted"
+        }
+      ]
+    },
+    "CompactionStrategy": {
+      "oneOf": [
+        {
+          "const": "memento"
+        },
+        {
+          "const": "prefix_compaction"
+        }
+      ]
+    },
+    "CompactionTrigger": {
+      "oneOf": [
+        {
+          "const": "manual"
+        },
+        {
+          "const": "auto"
+        }
+      ]
+    },
+    "ElicitationType": {
+      "oneOf": [
+        {
+          "const": "auth_or_link"
+        },
+        {
+          "const": "approval"
+        }
+      ]
+    },
+    "FinalApprovalOutcome": {
+      "oneOf": [
+        {
+          "const": "unknown"
+        },
+        {
+          "const": "not_needed"
+        },
+        {
+          "const": "config_allowed"
+        },
+        {
+          "const": "policy_forbidden"
+        },
+        {
+          "const": "guardian_approved"
+        },
+        {
+          "const": "guardian_denied"
+        },
+        {
+          "const": "guardian_aborted"
+        },
+        {
+          "const": "user_approved"
+        },
+        {
+          "const": "user_approved_for_session"
+        },
+        {
+          "const": "user_denied"
+        },
+        {
+          "const": "user_aborted"
+        }
+      ]
+    },
+    "GoalEventKind": {
+      "oneOf": [
+        {
+          "const": "created"
+        },
+        {
+          "const": "usage_accounted"
+        },
+        {
+          "const": "status_changed"
+        },
+        {
+          "const": "cleared"
+        }
+      ]
+    },
+    "GuardianAdditionalPermissions": {
+      "evidence": {
+        "line": 345,
+        "path": "codex-rs/analytics/src/events.rs"
+      },
+      "properties": {
+        "network": {
+          "nullable": {
+            "ref": "GuardianNetworkPermissions"
+          }
+        }
+      },
+      "required": [
+        "network"
+      ],
+      "type": "object"
+    },
+    "GuardianApprovalRequestSource": {
+      "oneOf": [
+        {
+          "const": "main_turn"
+        },
+        {
+          "const": "delegated_subagent"
+        }
+      ]
+    },
+    "GuardianAssessmentOutcome": {
+      "oneOf": [
+        {
+          "const": "allow"
+        },
+        {
+          "const": "deny"
+        }
+      ]
+    },
+    "GuardianCommandSource": {
+      "oneOf": [
+        {
+          "const": "shell"
+        },
+        {
+          "const": "unified_exec"
+        }
+      ]
+    },
+    "GuardianNetworkPermissions": {
+      "evidence": {
+        "line": 350,
+        "path": "codex-rs/analytics/src/events.rs"
+      },
+      "properties": {
+        "enabled": {
+          "nullable": {
+            "type": "boolean"
+          }
+        }
+      },
+      "required": [
+        "enabled"
+      ],
+      "type": "object"
+    },
+    "GuardianReviewDecision": {
+      "oneOf": [
+        {
+          "const": "approved"
+        },
+        {
+          "const": "denied"
+        },
+        {
+          "const": "aborted"
+        }
+      ]
+    },
+    "GuardianReviewEventParams": {
+      "evidence": {
+        "line": 402,
+        "path": "codex-rs/analytics/src/events.rs"
+      },
+      "properties": {
+        "approval_request_source": {
+          "ref": "GuardianApprovalRequestSource"
+        },
+        "attempt_count": {
+          "bits": 64,
+          "type": "int"
+        },
+        "cache_write_input_tokens": {
+          "nullable": {
+            "bits": 64,
+            "type": "int"
+          }
+        },
+        "cached_input_tokens": {
+          "nullable": {
+            "bits": 64,
+            "type": "int"
+          }
+        },
+        "completed_at": {
+          "nullable": {
+            "bits": 64,
+            "type": "uint"
+          }
+        },
+        "completion_latency_ms": {
+          "nullable": {
+            "bits": 64,
+            "type": "uint"
+          }
+        },
+        "decision": {
+          "ref": "GuardianReviewDecision"
+        },
+        "failure_reason": {
+          "nullable": {
+            "ref": "GuardianReviewFailureReason"
+          }
+        },
+        "guardian_catalog_contains_auto_review": {
+          "nullable": {
+            "type": "boolean"
+          }
+        },
+        "guardian_default_review_model_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "guardian_model": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "guardian_model_provider_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "guardian_reasoning_effort": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "guardian_review_model_overridden": {
+          "nullable": {
+            "type": "boolean"
+          }
+        },
+        "guardian_review_model_override": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "guardian_session_kind": {
+          "nullable": {
+            "ref": "GuardianReviewSessionKind"
+          }
+        },
+        "guardian_thread_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "had_prior_review_context": {
+          "nullable": {
+            "type": "boolean"
+          }
+        },
+        "input_tokens": {
+          "nullable": {
+            "bits": 64,
+            "type": "int"
+          }
+        },
+        "outcome": {
+          "nullable": {
+            "ref": "GuardianAssessmentOutcome"
+          }
+        },
+        "output_tokens": {
+          "nullable": {
+            "bits": 64,
+            "type": "int"
+          }
+        },
+        "reasoning_output_tokens": {
+          "nullable": {
+            "bits": 64,
+            "type": "int"
+          }
+        },
+        "review_id": {
+          "type": "string"
+        },
+        "review_timeout_ms": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "reviewed_action": {
+          "ref": "GuardianReviewedAction"
+        },
+        "reviewed_action_truncated": {
+          "type": "boolean"
+        },
+        "risk_level": {
+          "nullable": {
+            "ref": "GuardianRiskLevel"
+          }
+        },
+        "started_at": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "target_item_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "terminal_status": {
+          "ref": "GuardianReviewTerminalStatus"
+        },
+        "thread_id": {
+          "type": "string"
+        },
+        "time_to_first_token_ms": {
+          "nullable": {
+            "bits": 64,
+            "type": "uint"
+          }
+        },
+        "tool_call_count": {
+          "nullable": {
+            "bits": 64,
+            "type": "uint"
+          }
+        },
+        "total_tokens": {
+          "nullable": {
+            "bits": 64,
+            "type": "int"
+          }
+        },
+        "turn_id": {
+          "type": "string"
+        },
+        "user_authorization": {
+          "nullable": {
+            "ref": "GuardianUserAuthorization"
+          }
+        }
+      },
+      "required": [
+        "thread_id",
+        "turn_id",
+        "review_id",
+        "target_item_id",
+        "approval_request_source",
+        "reviewed_action",
+        "reviewed_action_truncated",
+        "decision",
+        "terminal_status",
+        "failure_reason",
+        "attempt_count",
+        "risk_level",
+        "user_authorization",
+        "outcome",
+        "guardian_thread_id",
+        "guardian_session_kind",
+        "guardian_model",
+        "guardian_reasoning_effort",
+        "guardian_default_review_model_id",
+        "guardian_catalog_contains_auto_review",
+        "guardian_review_model_overridden",
+        "guardian_review_model_override",
+        "guardian_model_provider_id",
+        "had_prior_review_context",
+        "review_timeout_ms",
+        "tool_call_count",
+        "time_to_first_token_ms",
+        "completion_latency_ms",
+        "started_at",
+        "completed_at",
+        "input_tokens",
+        "cached_input_tokens",
+        "cache_write_input_tokens",
+        "output_tokens",
+        "reasoning_output_tokens",
+        "total_tokens"
+      ],
+      "type": "object"
+    },
+    "GuardianReviewEventPayload": {
+      "evidence": {
+        "line": 615,
+        "path": "codex-rs/analytics/src/events.rs"
+      },
+      "properties": {
+        "app_server_client": {
+          "ref": "CodexAppServerClientMetadata"
+        },
+        "approval_request_source": {
+          "ref": "GuardianApprovalRequestSource"
+        },
+        "attempt_count": {
+          "bits": 64,
+          "type": "int"
+        },
+        "cache_write_input_tokens": {
+          "nullable": {
+            "bits": 64,
+            "type": "int"
+          }
+        },
+        "cached_input_tokens": {
+          "nullable": {
+            "bits": 64,
+            "type": "int"
+          }
+        },
+        "completed_at": {
+          "nullable": {
+            "bits": 64,
+            "type": "uint"
+          }
+        },
+        "completion_latency_ms": {
+          "nullable": {
+            "bits": 64,
+            "type": "uint"
+          }
+        },
+        "decision": {
+          "ref": "GuardianReviewDecision"
+        },
+        "failure_reason": {
+          "nullable": {
+            "ref": "GuardianReviewFailureReason"
+          }
+        },
+        "guardian_catalog_contains_auto_review": {
+          "nullable": {
+            "type": "boolean"
+          }
+        },
+        "guardian_default_review_model_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "guardian_model": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "guardian_model_provider_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "guardian_reasoning_effort": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "guardian_review_model_overridden": {
+          "nullable": {
+            "type": "boolean"
+          }
+        },
+        "guardian_review_model_override": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "guardian_session_kind": {
+          "nullable": {
+            "ref": "GuardianReviewSessionKind"
+          }
+        },
+        "guardian_thread_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "had_prior_review_context": {
+          "nullable": {
+            "type": "boolean"
+          }
+        },
+        "input_tokens": {
+          "nullable": {
+            "bits": 64,
+            "type": "int"
+          }
+        },
+        "outcome": {
+          "nullable": {
+            "ref": "GuardianAssessmentOutcome"
+          }
+        },
+        "output_tokens": {
+          "nullable": {
+            "bits": 64,
+            "type": "int"
+          }
+        },
+        "reasoning_output_tokens": {
+          "nullable": {
+            "bits": 64,
+            "type": "int"
+          }
+        },
+        "review_id": {
+          "type": "string"
+        },
+        "review_timeout_ms": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "reviewed_action": {
+          "ref": "GuardianReviewedAction"
+        },
+        "reviewed_action_truncated": {
+          "type": "boolean"
+        },
+        "risk_level": {
+          "nullable": {
+            "ref": "GuardianRiskLevel"
+          }
+        },
+        "runtime": {
+          "ref": "CodexRuntimeMetadata"
+        },
+        "session_id": {
+          "type": "string"
+        },
+        "started_at": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "target_item_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "terminal_status": {
+          "ref": "GuardianReviewTerminalStatus"
+        },
+        "thread_id": {
+          "type": "string"
+        },
+        "time_to_first_token_ms": {
+          "nullable": {
+            "bits": 64,
+            "type": "uint"
+          }
+        },
+        "tool_call_count": {
+          "nullable": {
+            "bits": 64,
+            "type": "uint"
+          }
+        },
+        "total_tokens": {
+          "nullable": {
+            "bits": 64,
+            "type": "int"
+          }
+        },
+        "turn_id": {
+          "type": "string"
+        },
+        "user_authorization": {
+          "nullable": {
+            "ref": "GuardianUserAuthorization"
+          }
+        }
+      },
+      "required": [
+        "session_id",
+        "app_server_client",
+        "runtime",
+        "thread_id",
+        "turn_id",
+        "review_id",
+        "target_item_id",
+        "approval_request_source",
+        "reviewed_action",
+        "reviewed_action_truncated",
+        "decision",
+        "terminal_status",
+        "failure_reason",
+        "attempt_count",
+        "risk_level",
+        "user_authorization",
+        "outcome",
+        "guardian_thread_id",
+        "guardian_session_kind",
+        "guardian_model",
+        "guardian_reasoning_effort",
+        "guardian_default_review_model_id",
+        "guardian_catalog_contains_auto_review",
+        "guardian_review_model_overridden",
+        "guardian_review_model_override",
+        "guardian_model_provider_id",
+        "had_prior_review_context",
+        "review_timeout_ms",
+        "tool_call_count",
+        "time_to_first_token_ms",
+        "completion_latency_ms",
+        "started_at",
+        "completed_at",
+        "input_tokens",
+        "cached_input_tokens",
+        "cache_write_input_tokens",
+        "output_tokens",
+        "reasoning_output_tokens",
+        "total_tokens"
+      ],
+      "type": "object"
+    },
+    "GuardianReviewEventRequest": {
+      "evidence": {
+        "line": 291,
+        "path": "codex-rs/analytics/src/events.rs"
+      },
+      "properties": {
+        "event_params": {
+          "ref": "GuardianReviewEventPayload"
+        },
+        "event_type": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "event_type",
+        "event_params"
+      ],
+      "type": "object"
+    },
+    "GuardianReviewFailureReason": {
+      "oneOf": [
+        {
+          "const": "stale_authorization"
+        },
+        {
+          "const": "timeout"
+        },
+        {
+          "const": "cancelled"
+        },
+        {
+          "const": "prompt_build_error"
+        },
+        {
+          "const": "session_error"
+        },
+        {
+          "const": "parse_error"
+        }
+      ]
+    },
+    "GuardianReviewSessionKind": {
+      "oneOf": [
+        {
+          "const": "trunk_new"
+        },
+        {
+          "const": "trunk_reused"
+        },
+        {
+          "const": "ephemeral_forked"
+        }
+      ]
+    },
+    "GuardianReviewTerminalStatus": {
+      "oneOf": [
+        {
+          "const": "approved"
+        },
+        {
+          "const": "denied"
+        },
+        {
+          "const": "aborted"
+        },
+        {
+          "const": "timed_out"
+        },
+        {
+          "const": "failed_closed"
+        }
+      ]
+    },
+    "GuardianReviewedAction": {
+      "oneOf": [
+        {
+          "properties": {
+            "additional_permissions": {
+              "nullable": {
+                "ref": "GuardianAdditionalPermissions"
+              }
+            },
+            "sandbox_permissions": {
+              "ref": "SandboxPermissions"
+            },
+            "type": {
+              "const": "shell"
+            }
+          },
+          "required": [
+            "sandbox_permissions",
+            "additional_permissions",
+            "type"
+          ],
+          "type": "object"
+        },
+        {
+          "properties": {
+            "additional_permissions": {
+              "nullable": {
+                "ref": "GuardianAdditionalPermissions"
+              }
+            },
+            "sandbox_permissions": {
+              "ref": "SandboxPermissions"
+            },
+            "tty": {
+              "type": "boolean"
+            },
+            "type": {
+              "const": "unified_exec"
+            }
+          },
+          "required": [
+            "sandbox_permissions",
+            "additional_permissions",
+            "tty",
+            "type"
+          ],
+          "type": "object"
+        },
+        {
+          "properties": {
+            "tty": {
+              "type": "boolean"
+            },
+            "type": {
+              "const": "write_stdin"
+            }
+          },
+          "required": [
+            "tty",
+            "type"
+          ],
+          "type": "object"
+        },
+        {
+          "properties": {
+            "additional_permissions": {
+              "nullable": {
+                "ref": "GuardianAdditionalPermissions"
+              }
+            },
+            "source": {
+              "ref": "GuardianCommandSource"
+            },
+            "type": {
+              "const": "execve"
+            }
+          },
+          "required": [
+            "source",
+            "additional_permissions",
+            "type"
+          ],
+          "type": "object"
+        },
+        {
+          "properties": {
+            "type": {
+              "const": "apply_patch"
+            }
+          },
+          "required": [
+            "type"
+          ],
+          "type": "object"
+        },
+        {
+          "properties": {
+            "port": {
+              "bits": 16,
+              "type": "uint"
+            },
+            "protocol": {
+              "ref": "NetworkApprovalProtocol"
+            },
+            "type": {
+              "const": "network_access"
+            }
+          },
+          "required": [
+            "protocol",
+            "port",
+            "type"
+          ],
+          "type": "object"
+        },
+        {
+          "properties": {
+            "connector_id": {
+              "nullable": {
+                "type": "string"
+              }
+            },
+            "connector_name": {
+              "nullable": {
+                "type": "string"
+              }
+            },
+            "server": {
+              "type": "string"
+            },
+            "tool_name": {
+              "type": "string"
+            },
+            "tool_title": {
+              "nullable": {
+                "type": "string"
+              }
+            },
+            "type": {
+              "const": "mcp_tool_call"
+            }
+          },
+          "required": [
+            "server",
+            "tool_name",
+            "connector_id",
+            "connector_name",
+            "tool_title",
+            "type"
+          ],
+          "type": "object"
+        },
+        {
+          "properties": {
+            "type": {
+              "const": "request_permissions"
+            }
+          },
+          "required": [
+            "type"
+          ],
+          "type": "object"
+        }
+      ]
+    },
+    "GuardianRiskLevel": {
+      "oneOf": [
+        {
+          "const": "low"
+        },
+        {
+          "const": "medium"
+        },
+        {
+          "const": "high"
+        },
+        {
+          "const": "critical"
+        }
+      ]
+    },
+    "GuardianUserAuthorization": {
+      "oneOf": [
+        {
+          "const": "unknown"
+        },
+        {
+          "const": "low"
+        },
+        {
+          "const": "medium"
+        },
+        {
+          "const": "high"
+        }
+      ]
+    },
+    "GuardianV2Event": {
+      "oneOf": [
+        {
+          "evidence": {
+            "line": 10,
+            "path": "codex-rs/analytics/src/guardian_v2.rs"
+          },
+          "properties": {
+            "duration_ms": {
+              "bits": 64,
+              "type": "uint"
+            },
+            "item_id": {
+              "nullable": {
+                "type": "string"
+              }
+            },
+            "model": {
+              "nullable": {
+                "type": "string"
+              }
+            },
+            "occurred_at_ms": {
+              "bits": 64,
+              "type": "uint"
+            },
+            "outcome": {
+              "oneOf": [
+                {
+                  "const": "success"
+                },
+                {
+                  "const": "superseded"
+                },
+                {
+                  "const": "failure"
+                }
+              ]
+            },
+            "risk_level": {
+              "nullable": {
+                "oneOf": [
+                  {
+                    "const": "high"
+                  },
+                  {
+                    "const": "low"
+                  }
+                ]
+              }
+            },
+            "thread_id": {
+              "type": "string"
+            },
+            "turn_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "thread_id",
+            "turn_id",
+            "item_id",
+            "model",
+            "occurred_at_ms",
+            "outcome",
+            "risk_level",
+            "duration_ms"
+          ],
+          "type": "object"
+        },
+        {
+          "evidence": {
+            "line": 10,
+            "path": "codex-rs/analytics/src/guardian_v2.rs"
+          },
+          "properties": {
+            "decision": {
+              "const": "approved"
+            },
+            "item_id": {
+              "nullable": {
+                "type": "string"
+              }
+            },
+            "model": {
+              "nullable": {
+                "type": "string"
+              }
+            },
+            "occurred_at_ms": {
+              "bits": 64,
+              "type": "uint"
+            },
+            "thread_id": {
+              "type": "string"
+            },
+            "turn_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "thread_id",
+            "turn_id",
+            "item_id",
+            "model",
+            "occurred_at_ms",
+            "decision"
+          ],
+          "type": "object"
+        }
+      ]
+    },
+    "GuardianV2EventKind": {
+      "oneOf": [
+        {
+          "properties": {
+            "duration_ms": {
+              "bits": 64,
+              "type": "uint"
+            },
+            "outcome": {
+              "oneOf": [
+                {
+                  "const": "success"
+                },
+                {
+                  "const": "superseded"
+                },
+                {
+                  "const": "failure"
+                }
+              ]
+            },
+            "risk_level": {
+              "nullable": {
+                "oneOf": [
+                  {
+                    "const": "high"
+                  },
+                  {
+                    "const": "low"
+                  }
+                ]
+              }
+            }
+          },
+          "required": [
+            "outcome",
+            "risk_level",
+            "duration_ms"
+          ],
+          "type": "object"
+        },
+        {
+          "properties": {
+            "decision": {
+              "const": "approved"
+            }
+          },
+          "required": [
+            "decision"
+          ],
+          "type": "object"
+        }
+      ]
+    },
+    "GuardianV2EventParams": {
+      "oneOf": [
+        {
+          "evidence": {
+            "line": 40,
+            "path": "codex-rs/analytics/src/guardian_v2.rs"
+          },
+          "properties": {
+            "app_server_client": {
+              "ref": "CodexAppServerClientMetadata"
+            },
+            "duration_ms": {
+              "bits": 64,
+              "type": "uint"
+            },
+            "item_id": {
+              "nullable": {
+                "type": "string"
+              }
+            },
+            "model": {
+              "nullable": {
+                "type": "string"
+              }
+            },
+            "occurred_at_ms": {
+              "bits": 64,
+              "type": "uint"
+            },
+            "outcome": {
+              "oneOf": [
+                {
+                  "const": "success"
+                },
+                {
+                  "const": "superseded"
+                },
+                {
+                  "const": "failure"
+                }
+              ]
+            },
+            "parent_thread_id": {
+              "nullable": {
+                "type": "string"
+              }
+            },
+            "risk_level": {
+              "nullable": {
+                "oneOf": [
+                  {
+                    "const": "high"
+                  },
+                  {
+                    "const": "low"
+                  }
+                ]
+              }
+            },
+            "runtime": {
+              "ref": "CodexRuntimeMetadata"
+            },
+            "session_id": {
+              "type": "string"
+            },
+            "subagent_source": {
+              "nullable": {
+                "type": "string"
+              }
+            },
+            "thread_id": {
+              "type": "string"
+            },
+            "thread_source": {
+              "nullable": {
+                "ref": "ThreadSource"
+              }
+            },
+            "turn_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "session_id",
+            "app_server_client",
+            "runtime",
+            "thread_source",
+            "subagent_source",
+            "parent_thread_id",
+            "thread_id",
+            "turn_id",
+            "item_id",
+            "model",
+            "occurred_at_ms",
+            "outcome",
+            "risk_level",
+            "duration_ms"
+          ],
+          "type": "object"
+        },
+        {
+          "evidence": {
+            "line": 40,
+            "path": "codex-rs/analytics/src/guardian_v2.rs"
+          },
+          "properties": {
+            "app_server_client": {
+              "ref": "CodexAppServerClientMetadata"
+            },
+            "decision": {
+              "const": "approved"
+            },
+            "item_id": {
+              "nullable": {
+                "type": "string"
+              }
+            },
+            "model": {
+              "nullable": {
+                "type": "string"
+              }
+            },
+            "occurred_at_ms": {
+              "bits": 64,
+              "type": "uint"
+            },
+            "parent_thread_id": {
+              "nullable": {
+                "type": "string"
+              }
+            },
+            "runtime": {
+              "ref": "CodexRuntimeMetadata"
+            },
+            "session_id": {
+              "type": "string"
+            },
+            "subagent_source": {
+              "nullable": {
+                "type": "string"
+              }
+            },
+            "thread_id": {
+              "type": "string"
+            },
+            "thread_source": {
+              "nullable": {
+                "ref": "ThreadSource"
+              }
+            },
+            "turn_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "session_id",
+            "app_server_client",
+            "runtime",
+            "thread_source",
+            "subagent_source",
+            "parent_thread_id",
+            "thread_id",
+            "turn_id",
+            "item_id",
+            "model",
+            "occurred_at_ms",
+            "decision"
+          ],
+          "type": "object"
+        }
+      ]
+    },
+    "GuardianV2EventRequest": {
+      "evidence": {
+        "line": 34,
+        "path": "codex-rs/analytics/src/guardian_v2.rs"
+      },
+      "properties": {
+        "event_params": {
+          "ref": "GuardianV2EventParams"
+        },
+        "event_type": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "event_type",
+        "event_params"
+      ],
+      "type": "object"
+    },
+    "HookExecutionMode": {
+      "oneOf": [
+        {
+          "const": "sync"
+        },
+        {
+          "const": "async"
+        }
+      ]
+    },
+    "HookHandlerType": {
+      "oneOf": [
+        {
+          "const": "command"
+        },
+        {
+          "const": "mcp_tool"
+        },
+        {
+          "const": "prompt"
+        },
+        {
+          "const": "agent"
+        }
+      ]
+    },
+    "HookRunStatus": {
+      "oneOf": [
+        {
+          "const": "running"
+        },
+        {
+          "const": "completed"
+        },
+        {
+          "const": "failed"
+        },
+        {
+          "const": "blocked"
+        },
+        {
+          "const": "stopped"
+        }
+      ]
+    },
+    "ImageDetailSetting": {
+      "oneOf": [
+        {
+          "const": "high"
+        },
+        {
+          "const": "original"
+        }
+      ]
+    },
+    "ImagePreparationMetadata": {
+      "evidence": {
+        "line": 163,
+        "path": "codex-rs/analytics/src/facts.rs"
+      },
+      "properties": {
+        "effective_detail": {
+          "ref": "ImageDetailSetting"
+        },
+        "item_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "message_role": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "prepared_height": {
+          "bits": 32,
+          "type": "uint"
+        },
+        "prepared_width": {
+          "bits": 32,
+          "type": "uint"
+        },
+        "source_height": {
+          "bits": 32,
+          "type": "uint"
+        },
+        "source_width": {
+          "bits": 32,
+          "type": "uint"
+        }
+      },
+      "required": [
+        "message_role",
+        "item_id",
+        "effective_detail",
+        "source_width",
+        "source_height",
+        "prepared_width",
+        "prepared_height"
+      ],
+      "type": "object"
+    },
+    "InvocationType": {
+      "oneOf": [
+        {
+          "const": "explicit"
+        },
+        {
+          "const": "implicit"
+        }
+      ]
+    },
+    "NetworkApprovalProtocol": {
+      "oneOf": [
+        {
+          "const": "http"
+        },
+        {
+          "const": "https"
+        },
+        {
+          "const": "socks5_tcp"
+        },
+        {
+          "const": "socks5_udp"
+        }
+      ]
+    },
+    "NonSteerableTurnKind": {
+      "oneOf": [
+        {
+          "const": "review"
+        },
+        {
+          "const": "compact"
+        }
+      ]
+    },
+    "PluginInstallRequestSource": {
+      "oneOf": [
+        {
+          "const": "endpoint_recommendation"
+        },
+        {
+          "const": "legacy_discovery"
+        }
+      ]
+    },
+    "PluginInstallSource": {
+      "oneOf": [
+        {
+          "const": "manual"
+        },
+        {
+          "const": "external_agent_migration"
+        }
+      ]
+    },
+    "ReviewResolution": {
+      "oneOf": [
+        {
+          "const": "none"
+        },
+        {
+          "const": "session_approval"
+        },
+        {
+          "const": "exec_policy_amendment"
+        },
+        {
+          "const": "network_policy_amendment"
+        }
+      ]
+    },
+    "ReviewStatus": {
+      "oneOf": [
+        {
+          "const": "approved"
+        },
+        {
+          "const": "denied"
+        },
+        {
+          "const": "aborted"
+        },
+        {
+          "const": "timed_out"
+        }
+      ]
+    },
+    "ReviewSubjectKind": {
+      "oneOf": [
+        {
+          "const": "command_execution"
+        },
+        {
+          "const": "write_stdin"
+        },
+        {
+          "const": "file_change"
+        },
+        {
+          "const": "mcp_tool_call"
+        },
+        {
+          "const": "permissions"
+        },
+        {
+          "const": "network_access"
+        }
+      ]
+    },
+    "ReviewTrigger": {
+      "oneOf": [
+        {
+          "const": "initial"
+        },
+        {
+          "const": "sandbox_denial"
+        },
+        {
+          "const": "network_policy_denial"
+        },
+        {
+          "const": "execve_intercept"
+        }
+      ]
+    },
+    "Reviewer": {
+      "oneOf": [
+        {
+          "const": "guardian"
+        },
+        {
+          "const": "user"
+        }
+      ]
+    },
+    "SandboxPermissions": {
+      "oneOf": [
+        {
+          "const": "use_default"
+        },
+        {
+          "const": "require_escalated"
+        },
+        {
+          "const": "with_additional_permissions"
+        }
+      ]
+    },
+    "SkillInvocationEventParams": {
+      "evidence": {
+        "line": 209,
+        "path": "codex-rs/analytics/src/events.rs"
+      },
+      "properties": {
+        "invoke_type": {
+          "nullable": {
+            "ref": "InvocationType"
+          }
+        },
+        "model_slug": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "plugin_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "product_client_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "remote_plugin_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "skill_scope": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "thread_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "turn_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "voice_session_id": {
+          "nullable": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "product_client_id",
+        "skill_scope",
+        "plugin_id",
+        "remote_plugin_id",
+        "thread_id",
+        "turn_id",
+        "voice_session_id",
+        "invoke_type",
+        "model_slug"
+      ],
+      "type": "object"
+    },
+    "SkillInvocationEventRequest": {
+      "evidence": {
+        "line": 201,
+        "path": "codex-rs/analytics/src/events.rs"
+      },
+      "properties": {
+        "event_params": {
+          "ref": "SkillInvocationEventParams"
+        },
+        "event_type": {
+          "type": "string"
+        },
+        "skill_id": {
+          "type": "string"
+        },
+        "skill_name": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "event_type",
+        "skill_id",
+        "skill_name",
+        "event_params"
+      ],
+      "type": "object"
+    },
+    "ThreadArchiveAction": {
+      "oneOf": [
+        {
+          "const": "archived"
+        },
+        {
+          "const": "unarchived"
+        }
+      ]
+    },
+    "ThreadArchiveEvent": {
+      "evidence": {
+        "line": 285,
+        "path": "codex-rs/analytics/src/events.rs"
+      },
+      "properties": {
+        "event_params": {
+          "ref": "ThreadArchiveEventParams"
+        },
+        "event_type": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "event_type",
+        "event_params"
+      ],
+      "type": "object"
+    },
+    "ThreadArchiveEventParams": {
+      "evidence": {
+        "line": 270,
+        "path": "codex-rs/analytics/src/events.rs"
+      },
+      "properties": {
+        "action": {
+          "ref": "ThreadArchiveAction"
+        },
+        "app_server_client": {
+          "nullable": {
+            "ref": "CodexAppServerClientMetadata"
+          }
+        },
+        "occurred_at_ms": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "parent_thread_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "runtime": {
+          "nullable": {
+            "ref": "CodexRuntimeMetadata"
+          }
+        },
+        "thread_id": {
+          "type": "string"
+        },
+        "thread_source": {
+          "nullable": {
+            "ref": "ThreadSource"
+          }
+        }
+      },
+      "required": [
+        "thread_id",
+        "action",
+        "occurred_at_ms"
+      ],
+      "type": "object"
+    },
+    "ThreadGoalStatus": {
+      "oneOf": [
+        {
+          "const": "active"
+        },
+        {
+          "const": "paused"
+        },
+        {
+          "const": "blocked"
+        },
+        {
+          "const": "usage_limited"
+        },
+        {
+          "const": "budget_limited"
+        },
+        {
+          "const": "complete"
+        }
+      ]
+    },
+    "ThreadHintStatus": {
+      "oneOf": [
+        {
+          "const": "succeeded"
+        },
+        {
+          "const": "failed"
+        }
+      ]
+    },
+    "ThreadHintStatusEventParams": {
+      "evidence": {
+        "line": 28,
+        "path": "codex-rs/analytics/src/thread_hint.rs"
+      },
+      "properties": {
+        "app_server_client": {
+          "ref": "CodexAppServerClientMetadata"
+        },
+        "occurred_at_ms": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "parent_thread_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "runtime": {
+          "ref": "CodexRuntimeMetadata"
+        },
+        "session_id": {
+          "type": "string"
+        },
+        "status": {
+          "ref": "ThreadHintStatus"
+        },
+        "subagent_source": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "thread_id": {
+          "type": "string"
+        },
+        "thread_source": {
+          "nullable": {
+            "ref": "ThreadSource"
+          }
+        }
+      },
+      "required": [
+        "thread_id",
+        "session_id",
+        "app_server_client",
+        "runtime",
+        "thread_source",
+        "subagent_source",
+        "parent_thread_id",
+        "status",
+        "occurred_at_ms"
+      ],
+      "type": "object"
+    },
+    "ThreadHintStatusEventRequest": {
+      "evidence": {
+        "line": 22,
+        "path": "codex-rs/analytics/src/thread_hint.rs"
+      },
+      "properties": {
+        "event_params": {
+          "ref": "ThreadHintStatusEventParams"
+        },
+        "event_type": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "event_type",
+        "event_params"
+      ],
+      "type": "object"
+    },
+    "ThreadInitializationMode": {
+      "oneOf": [
+        {
+          "const": "new"
+        },
+        {
+          "const": "forked"
+        },
+        {
+          "const": "resumed"
+        }
+      ]
+    },
+    "ThreadInitializedEvent": {
+      "evidence": {
+        "line": 257,
+        "path": "codex-rs/analytics/src/events.rs"
+      },
+      "properties": {
+        "event_params": {
+          "ref": "ThreadInitializedEventParams"
+        },
+        "event_type": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "event_type",
+        "event_params"
+      ],
+      "type": "object"
+    },
+    "ThreadInitializedEventParams": {
+      "evidence": {
+        "line": 239,
+        "path": "codex-rs/analytics/src/events.rs"
+      },
+      "properties": {
+        "app_server_client": {
+          "ref": "CodexAppServerClientMetadata"
+        },
+        "created_at": {
+          "bits": 64,
+          "type": "uint"
+        },
+        "ephemeral": {
+          "type": "boolean"
+        },
+        "forked_from_thread_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "initialization_mode": {
+          "ref": "ThreadInitializationMode"
+        },
+        "is_worktree": {
+          "nullable": {
+            "type": "boolean"
+          }
+        },
+        "model": {
+          "type": "string"
+        },
+        "parent_thread_id": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "runtime": {
+          "ref": "CodexRuntimeMetadata"
+        },
+        "session_id": {
+          "type": "string"
+        },
+        "subagent_source": {
+          "nullable": {
+            "type": "string"
+          }
+        },
+        "thread_id": {
+          "type": "string"
+        },
+        "thread_source": {
+          "nullable": {
+            "ref": "ThreadSource"
+          }
+        }
+      },
+      "required": [
+        "thread_id",
+        "session_id",
+        "app_server_client",
+        "runtime",
+        "model",
+        "ephemeral",
+        "is_worktree",
+        "thread_source",
+        "initialization_mode",
+        "subagent_source",
+        "parent_thread_id",
+        "forked_from_thread_id",
+        "created_at"
+      ],
+      "type": "object"
+    },
+    "ThreadSource": {
+      "evidence": {
+        "line": 2843,
+        "path": "codex-rs/protocol/src/protocol.rs"
+      },
+      "type": "string"
+    },
+    "ToolEventType": {
+      "oneOf": [
+        {
+          "const": "model_tool_call"
+        },
+        {
+          "const": "inner_tool_call"
+        }
+      ]
+    },
+    "ToolItemFailureKind": {
+      "oneOf": [
+        {
+          "const": "tool_error"
+        },
+        {
+          "const": "approval_denied"
+        },
+        {
+          "const": "approval_aborted"
+        },
+        {
+          "const": "sandbox_denied"
+        },
+        {
+          "const": "policy_forbidden"
+        }
+      ]
+    },
+    "ToolItemTerminalStatus": {
+      "oneOf": [
+        {
+          "const": "completed"
+        },
+        {
+          "const": "failed"
+        },
+        {
+          "const": "rejected"
+        },
+        {
+          "const": "interrupted"
+        }
+      ]
+    },
+    "TurnStatus": {
+      "oneOf": [
+        {
+          "const": "completed"
+        },
+        {
+          "const": "failed"
+        },
+        {
+          "const": "interrupted"
+        }
+      ]
+    },
+    "TurnSteerRejectionReason": {
+      "oneOf": [
+        {
+          "const": "no_active_turn"
+        },
+        {
+          "const": "expected_turn_mismatch"
+        },
+        {
+          "const": "non_steerable_review"
+        },
+        {
+          "const": "non_steerable_compact"
+        },
+        {
+          "const": "empty_input"
+        },
+        {
+          "const": "input_too_large"
+        }
+      ]
+    },
+    "TurnSteerResult": {
+      "oneOf": [
+        {
+          "const": "accepted"
+        },
+        {
+          "const": "rejected"
+        }
+      ]
+    },
+    "TurnSubmissionType": {
+      "oneOf": [
+        {
+          "const": "default"
+        },
+        {
+          "const": "queued"
+        }
+      ]
+    },
+    "WebSearchActionKind": {
+      "oneOf": [
+        {
+          "const": "search"
+        },
+        {
+          "const": "open_page"
+        },
+        {
+          "const": "find_in_page"
+        },
+        {
+          "const": "other"
+        }
+      ]
+    }
+  },
+  "event_count": 35,
+  "events": {
+    "codex_accepted_line_fingerprints": "CodexAcceptedLineFingerprintsEventRequest",
+    "codex_app_mentioned": "CodexAppMentionedEventRequest",
+    "codex_app_used": "CodexAppUsedEventRequest",
+    "codex_artifact_operation": "CodexArtifactOperationEventRequest",
+    "codex_collab_agent_tool_call_event": "CodexCollabAgentToolCallEventRequest",
+    "codex_command_execution_event": "CodexCommandExecutionEventRequest",
+    "codex_compaction_event": "CodexCompactionEventRequest",
+    "codex_control_tool_call_event": "CodexControlToolCallEventRequest",
+    "codex_dynamic_tool_call_event": "CodexDynamicToolCallEventRequest",
+    "codex_file_change_event": "CodexFileChangeEventRequest",
+    "codex_goal_event": "CodexGoalEventRequest",
+    "codex_guardian_review": "GuardianReviewEventRequest",
+    "codex_guardian_v2_classification": "GuardianV2EventRequest",
+    "codex_guardian_v2_fast_decision": "GuardianV2EventRequest",
+    "codex_hook_run": "CodexHookRunEventRequest",
+    "codex_image_generation_event": "CodexImageGenerationEventRequest",
+    "codex_mcp_tool_call_event": "CodexMcpToolCallEventRequest",
+    "codex_onboarding_external_agent_import_complete": "CodexOnboardingExternalAgentImportCompleteEventRequest",
+    "codex_onboarding_external_agent_import_failure": "CodexOnboardingExternalAgentImportFailureEventRequest",
+    "codex_plugin_disabled": "CodexPluginEventRequest",
+    "codex_plugin_enabled": "CodexPluginEventRequest",
+    "codex_plugin_install_failed": "CodexPluginInstallFailedEventRequest",
+    "codex_plugin_install_requested": "CodexPluginInstallRequestedEventRequest",
+    "codex_plugin_installed": "CodexPluginEventRequest",
+    "codex_plugin_measurement_event": "CodexPluginMeasurementEventRequest",
+    "codex_plugin_uninstalled": "CodexPluginEventRequest",
+    "codex_plugin_used": "CodexPluginUsedEventRequest",
+    "codex_review_event": "CodexReviewEventRequest",
+    "codex_thread_archive_event": "ThreadArchiveEvent",
+    "codex_thread_hint_status": "ThreadHintStatusEventRequest",
+    "codex_thread_initialized": "ThreadInitializedEvent",
+    "codex_turn_event": "CodexTurnEventRequest",
+    "codex_turn_steer_event": "CodexTurnSteerEventRequest",
+    "codex_web_search_event": "CodexWebSearchEventRequest",
+    "skill_invocation": "SkillInvocationEventRequest"
+  },
+  "field_actions": {
+    "codex_accepted_line_fingerprints": {
+      "/event_params/accepted_added_lines": "replace_complete_business_turn",
+      "/event_params/accepted_deleted_lines": "replace_complete_business_turn",
+      "/event_params/completed_at": "replace_complete_business_turn",
+      "/event_params/event_type": "preserve_native_environment",
+      "/event_params/line_fingerprints": "replace_complete_business_turn",
+      "/event_params/model_slug": "replace_business_request",
+      "/event_params/product_surface": "replace_complete_business_turn",
+      "/event_params/repo_hash": "replace_complete_business_turn",
+      "/event_params/thread_id": "preserve_native_environment",
+      "/event_params/turn_id": "preserve_native_environment"
+    },
+    "codex_app_mentioned": {
+      "/event_params/app_name": "preserve_trusted_tool_execution",
+      "/event_params/connector_id": "preserve_trusted_tool_execution",
+      "/event_params/invoke_type": "preserve_trusted_tool_execution",
+      "/event_params/model_slug": "replace_business_request",
+      "/event_params/product_client_id": "preserve_native_environment",
+      "/event_params/thread_id": "preserve_native_environment",
+      "/event_params/turn_id": "preserve_native_environment"
+    },
+    "codex_app_used": {
+      "/event_params/app_name": "preserve_trusted_tool_execution",
+      "/event_params/connector_id": "preserve_trusted_tool_execution",
+      "/event_params/elicitation_type": "preserve_trusted_tool_execution",
+      "/event_params/invoke_type": "preserve_trusted_tool_execution",
+      "/event_params/model_slug": "replace_business_request",
+      "/event_params/product_client_id": "preserve_native_environment",
+      "/event_params/thread_id": "preserve_native_environment",
+      "/event_params/turn_id": "preserve_native_environment",
+      "/event_params/voice_session_id": "preserve_trusted_tool_execution"
+    },
+    "codex_artifact_operation": {
+      "/event_params/artifact_type": "preserve_trusted_tool_execution",
+      "/event_params/execution_backend": "preserve_trusted_tool_execution",
+      "/event_params/expected_output_count": "preserve_trusted_tool_execution",
+      "/event_params/item_id": "preserve_trusted_tool_execution",
+      "/event_params/lifecycle": "preserve_trusted_tool_execution",
+      "/event_params/model_slug": "replace_business_request",
+      "/event_params/occurred_at_ms": "preserve_trusted_tool_execution",
+      "/event_params/operation_kind": "preserve_trusted_tool_execution",
+      "/event_params/output_format": "preserve_trusted_tool_execution",
+      "/event_params/plugin_id": "preserve_trusted_tool_execution",
+      "/event_params/product_client_id": "preserve_native_environment",
+      "/event_params/runtime": "preserve_native_environment",
+      "/event_params/script_path": "preserve_trusted_tool_execution",
+      "/event_params/skill": "preserve_trusted_tool_execution",
+      "/event_params/thread_id": "preserve_native_environment",
+      "/event_params/turn_id": "preserve_native_environment"
+    },
+    "codex_collab_agent_tool_call_event": {
+      "/event_params/agent_state_count": "preserve_trusted_tool_execution",
+      "/event_params/app_server_client": "preserve_native_environment",
+      "/event_params/cell_id": "preserve_trusted_tool_execution",
+      "/event_params/completed_agent_count": "preserve_trusted_tool_execution",
+      "/event_params/completed_at_ms": "preserve_trusted_tool_execution",
+      "/event_params/duration_ms": "preserve_trusted_tool_execution",
+      "/event_params/execution_duration_ms": "preserve_trusted_tool_execution",
+      "/event_params/failed_agent_count": "preserve_trusted_tool_execution",
+      "/event_params/failure_kind": "preserve_trusted_tool_execution",
+      "/event_params/final_approval_outcome": "preserve_trusted_tool_execution",
+      "/event_params/guardian_review_count": "preserve_trusted_tool_execution",
+      "/event_params/item_id": "preserve_trusted_tool_execution",
+      "/event_params/originating_response_id": "replace_business_response",
+      "/event_params/parent_call_id": "preserve_trusted_tool_execution",
+      "/event_params/parent_thread_id": "preserve_native_environment",
+      "/event_params/receiver_thread_count": "preserve_trusted_tool_execution",
+      "/event_params/receiver_thread_ids": "preserve_trusted_tool_execution",
+      "/event_params/requested_additional_permissions": "preserve_trusted_tool_execution",
+      "/event_params/requested_model": "replace_business_request",
+      "/event_params/requested_network_access": "preserve_trusted_tool_execution",
+      "/event_params/requested_reasoning_effort": "replace_business_request",
+      "/event_params/review_count": "preserve_trusted_tool_execution",
+      "/event_params/root_turn_id": "preserve_native_environment",
+      "/event_params/runtime": "preserve_native_environment",
+      "/event_params/sender_thread_id": "preserve_trusted_tool_execution",
+      "/event_params/session_id": "preserve_native_environment",
+      "/event_params/started_at_ms": "preserve_trusted_tool_execution",
+      "/event_params/subagent_source": "preserve_native_environment",
+      "/event_params/subsequent_response_id": "replace_business_response",
+      "/event_params/terminal_status": "preserve_trusted_tool_execution",
+      "/event_params/thread_id": "preserve_native_environment",
+      "/event_params/thread_source": "preserve_native_environment",
+      "/event_params/tool_event_type": "preserve_trusted_tool_execution",
+      "/event_params/tool_name": "preserve_trusted_tool_execution",
+      "/event_params/turn_id": "preserve_native_environment",
+      "/event_params/user_review_count": "preserve_trusted_tool_execution"
+    },
+    "codex_command_execution_event": {
+      "/event_params/app_server_client": "preserve_native_environment",
+      "/event_params/cell_id": "preserve_trusted_tool_execution",
+      "/event_params/command_execution_source": "preserve_trusted_tool_execution",
+      "/event_params/command_list_files_action_count": "preserve_trusted_tool_execution",
+      "/event_params/command_read_action_count": "preserve_trusted_tool_execution",
+      "/event_params/command_search_action_count": "preserve_trusted_tool_execution",
+      "/event_params/command_total_action_count": "preserve_trusted_tool_execution",
+      "/event_params/command_unknown_action_count": "preserve_trusted_tool_execution",
+      "/event_params/completed_at_ms": "preserve_trusted_tool_execution",
+      "/event_params/duration_ms": "preserve_trusted_tool_execution",
+      "/event_params/execution_duration_ms": "preserve_trusted_tool_execution",
+      "/event_params/exit_code": "preserve_trusted_tool_execution",
+      "/event_params/failure_kind": "preserve_trusted_tool_execution",
+      "/event_params/final_approval_outcome": "preserve_trusted_tool_execution",
+      "/event_params/guardian_review_count": "preserve_trusted_tool_execution",
+      "/event_params/item_id": "preserve_trusted_tool_execution",
+      "/event_params/model_slug": "replace_business_request",
+      "/event_params/originating_response_id": "replace_business_response",
+      "/event_params/parent_call_id": "preserve_trusted_tool_execution",
+      "/event_params/parent_thread_id": "preserve_native_environment",
+      "/event_params/plugin_id": "preserve_trusted_tool_execution",
+      "/event_params/reasoning_effort": "replace_business_request",
+      "/event_params/requested_additional_permissions": "preserve_trusted_tool_execution",
+      "/event_params/requested_network_access": "preserve_trusted_tool_execution",
+      "/event_params/review_count": "preserve_trusted_tool_execution",
+      "/event_params/root_turn_id": "preserve_native_environment",
+      "/event_params/runtime": "preserve_native_environment",
+      "/event_params/sandbox_backend": "preserve_trusted_tool_execution",
+      "/event_params/script_path": "preserve_trusted_tool_execution",
+      "/event_params/session_id": "preserve_native_environment",
+      "/event_params/started_at_ms": "preserve_trusted_tool_execution",
+      "/event_params/subagent_source": "preserve_native_environment",
+      "/event_params/subsequent_response_id": "replace_business_response",
+      "/event_params/terminal_status": "preserve_trusted_tool_execution",
+      "/event_params/thread_id": "preserve_native_environment",
+      "/event_params/thread_source": "preserve_native_environment",
+      "/event_params/tool_event_type": "preserve_trusted_tool_execution",
+      "/event_params/tool_name": "preserve_trusted_tool_execution",
+      "/event_params/turn_id": "preserve_native_environment",
+      "/event_params/user_review_count": "preserve_trusted_tool_execution"
+    },
+    "codex_compaction_event": {
+      "/event_params/active_context_tokens_after": "replace_complete_business_turn",
+      "/event_params/active_context_tokens_before": "replace_complete_business_turn",
+      "/event_params/app_server_client": "preserve_native_environment",
+      "/event_params/cache_write_input_tokens": "replace_complete_business_turn",
+      "/event_params/cached_input_tokens": "replace_complete_business_turn",
+      "/event_params/codex_error_http_status_code": "replace_complete_business_turn",
+      "/event_params/codex_error_kind": "replace_complete_business_turn",
+      "/event_params/compaction_summary_tokens": "replace_complete_business_turn",
+      "/event_params/completed_at": "replace_complete_business_turn",
+      "/event_params/duration_ms": "replace_complete_business_turn",
+      "/event_params/implementation": "replace_complete_business_turn",
+      "/event_params/parent_thread_id": "preserve_native_environment",
+      "/event_params/phase": "replace_complete_business_turn",
+      "/event_params/reason": "replace_complete_business_turn",
+      "/event_params/retained_image_count": "replace_complete_business_turn",
+      "/event_params/runtime": "preserve_native_environment",
+      "/event_params/session_id": "preserve_native_environment",
+      "/event_params/started_at": "replace_complete_business_turn",
+      "/event_params/status": "replace_complete_business_turn",
+      "/event_params/strategy": "replace_complete_business_turn",
+      "/event_params/subagent_source": "preserve_native_environment",
+      "/event_params/thread_id": "preserve_native_environment",
+      "/event_params/thread_source": "preserve_native_environment",
+      "/event_params/trigger": "replace_complete_business_turn",
+      "/event_params/turn_id": "preserve_native_environment",
+      "/event_params/usage_limit_window_minutes": "replace_complete_business_turn"
+    },
+    "codex_control_tool_call_event": {
+      "/event_params/app_server_client": "preserve_native_environment",
+      "/event_params/cell_id": "preserve_trusted_tool_execution",
+      "/event_params/completed_at_ms": "preserve_trusted_tool_execution",
+      "/event_params/duration_ms": "preserve_trusted_tool_execution",
+      "/event_params/execution_duration_ms": "preserve_trusted_tool_execution",
+      "/event_params/failure_kind": "preserve_trusted_tool_execution",
+      "/event_params/final_approval_outcome": "preserve_trusted_tool_execution",
+      "/event_params/guardian_review_count": "preserve_trusted_tool_execution",
+      "/event_params/item_id": "preserve_trusted_tool_execution",
+      "/event_params/originating_response_id": "replace_business_response",
+      "/event_params/parent_call_id": "preserve_trusted_tool_execution",
+      "/event_params/parent_thread_id": "preserve_native_environment",
+      "/event_params/requested_additional_permissions": "preserve_trusted_tool_execution",
+      "/event_params/requested_network_access": "preserve_trusted_tool_execution",
+      "/event_params/review_count": "preserve_trusted_tool_execution",
+      "/event_params/root_turn_id": "preserve_native_environment",
+      "/event_params/runtime": "preserve_native_environment",
+      "/event_params/session_id": "preserve_native_environment",
+      "/event_params/started_at_ms": "preserve_trusted_tool_execution",
+      "/event_params/subagent_source": "preserve_native_environment",
+      "/event_params/subsequent_response_id": "replace_business_response",
+      "/event_params/success": "preserve_trusted_tool_execution",
+      "/event_params/terminal_status": "preserve_trusted_tool_execution",
+      "/event_params/thread_id": "preserve_native_environment",
+      "/event_params/thread_source": "preserve_native_environment",
+      "/event_params/tool_event_type": "preserve_trusted_tool_execution",
+      "/event_params/tool_name": "preserve_trusted_tool_execution",
+      "/event_params/turn_id": "preserve_native_environment",
+      "/event_params/user_review_count": "preserve_trusted_tool_execution"
+    },
+    "codex_dynamic_tool_call_event": {
+      "/event_params/app_server_client": "preserve_native_environment",
+      "/event_params/cell_id": "preserve_trusted_tool_execution",
+      "/event_params/completed_at_ms": "preserve_trusted_tool_execution",
+      "/event_params/duration_ms": "preserve_trusted_tool_execution",
+      "/event_params/dynamic_tool_name": "preserve_trusted_tool_execution",
+      "/event_params/execution_duration_ms": "preserve_trusted_tool_execution",
+      "/event_params/failure_kind": "preserve_trusted_tool_execution",
+      "/event_params/final_approval_outcome": "preserve_trusted_tool_execution",
+      "/event_params/guardian_review_count": "preserve_trusted_tool_execution",
+      "/event_params/item_id": "preserve_trusted_tool_execution",
+      "/event_params/originating_response_id": "replace_business_response",
+      "/event_params/output_audio_item_count": "preserve_trusted_tool_execution",
+      "/event_params/output_content_item_count": "preserve_trusted_tool_execution",
+      "/event_params/output_image_item_count": "preserve_trusted_tool_execution",
+      "/event_params/output_text_item_count": "preserve_trusted_tool_execution",
+      "/event_params/parent_call_id": "preserve_trusted_tool_execution",
+      "/event_params/parent_thread_id": "preserve_native_environment",
+      "/event_params/requested_additional_permissions": "preserve_trusted_tool_execution",
+      "/event_params/requested_network_access": "preserve_trusted_tool_execution",
+      "/event_params/review_count": "preserve_trusted_tool_execution",
+      "/event_params/root_turn_id": "preserve_native_environment",
+      "/event_params/runtime": "preserve_native_environment",
+      "/event_params/session_id": "preserve_native_environment",
+      "/event_params/started_at_ms": "preserve_trusted_tool_execution",
+      "/event_params/subagent_source": "preserve_native_environment",
+      "/event_params/subsequent_response_id": "replace_business_response",
+      "/event_params/success": "preserve_trusted_tool_execution",
+      "/event_params/terminal_status": "preserve_trusted_tool_execution",
+      "/event_params/thread_id": "preserve_native_environment",
+      "/event_params/thread_source": "preserve_native_environment",
+      "/event_params/tool_event_type": "preserve_trusted_tool_execution",
+      "/event_params/tool_name": "preserve_trusted_tool_execution",
+      "/event_params/turn_id": "preserve_native_environment",
+      "/event_params/user_review_count": "preserve_trusted_tool_execution"
+    },
+    "codex_file_change_event": {
+      "/event_params/app_server_client": "preserve_native_environment",
+      "/event_params/cell_id": "preserve_trusted_tool_execution",
+      "/event_params/completed_at_ms": "preserve_trusted_tool_execution",
+      "/event_params/duration_ms": "preserve_trusted_tool_execution",
+      "/event_params/execution_duration_ms": "preserve_trusted_tool_execution",
+      "/event_params/failure_kind": "preserve_trusted_tool_execution",
+      "/event_params/file_add_count": "preserve_trusted_tool_execution",
+      "/event_params/file_change_count": "preserve_trusted_tool_execution",
+      "/event_params/file_delete_count": "preserve_trusted_tool_execution",
+      "/event_params/file_move_count": "preserve_trusted_tool_execution",
+      "/event_params/file_update_count": "preserve_trusted_tool_execution",
+      "/event_params/final_approval_outcome": "preserve_trusted_tool_execution",
+      "/event_params/guardian_review_count": "preserve_trusted_tool_execution",
+      "/event_params/item_id": "preserve_trusted_tool_execution",
+      "/event_params/originating_response_id": "replace_business_response",
+      "/event_params/parent_call_id": "preserve_trusted_tool_execution",
+      "/event_params/parent_thread_id": "preserve_native_environment",
+      "/event_params/requested_additional_permissions": "preserve_trusted_tool_execution",
+      "/event_params/requested_network_access": "preserve_trusted_tool_execution",
+      "/event_params/review_count": "preserve_trusted_tool_execution",
+      "/event_params/root_turn_id": "preserve_native_environment",
+      "/event_params/runtime": "preserve_native_environment",
+      "/event_params/session_id": "preserve_native_environment",
+      "/event_params/started_at_ms": "preserve_trusted_tool_execution",
+      "/event_params/subagent_source": "preserve_native_environment",
+      "/event_params/subsequent_response_id": "replace_business_response",
+      "/event_params/terminal_status": "preserve_trusted_tool_execution",
+      "/event_params/thread_id": "preserve_native_environment",
+      "/event_params/thread_source": "preserve_native_environment",
+      "/event_params/tool_event_type": "preserve_trusted_tool_execution",
+      "/event_params/tool_name": "preserve_trusted_tool_execution",
+      "/event_params/turn_id": "preserve_native_environment",
+      "/event_params/user_review_count": "preserve_trusted_tool_execution"
+    },
+    "codex_goal_event": {
+      "/event_params/app_server_client": "preserve_native_environment",
+      "/event_params/cumulative_time_accounted_seconds": "replace_complete_business_turn",
+      "/event_params/cumulative_tokens_accounted": "replace_complete_business_turn",
+      "/event_params/event_kind": "replace_complete_business_turn",
+      "/event_params/goal_id": "replace_complete_business_turn",
+      "/event_params/goal_status": "replace_complete_business_turn",
+      "/event_params/has_token_budget": "replace_complete_business_turn",
+      "/event_params/parent_thread_id": "preserve_native_environment",
+      "/event_params/runtime": "preserve_native_environment",
+      "/event_params/session_id": "preserve_native_environment",
+      "/event_params/subagent_source": "preserve_native_environment",
+      "/event_params/thread_id": "preserve_native_environment",
+      "/event_params/thread_source": "preserve_native_environment",
+      "/event_params/turn_id": "preserve_native_environment"
+    },
+    "codex_guardian_review": {
+      "/event_params/app_server_client": "preserve_native_environment",
+      "/event_params/approval_request_source": "preserve_trusted_tool_execution",
+      "/event_params/attempt_count": "preserve_trusted_tool_execution",
+      "/event_params/cache_write_input_tokens": "preserve_trusted_tool_execution",
+      "/event_params/cached_input_tokens": "preserve_trusted_tool_execution",
+      "/event_params/completed_at": "preserve_trusted_tool_execution",
+      "/event_params/completion_latency_ms": "preserve_trusted_tool_execution",
+      "/event_params/decision": "preserve_trusted_tool_execution",
+      "/event_params/failure_reason": "preserve_trusted_tool_execution",
+      "/event_params/guardian_catalog_contains_auto_review": "preserve_trusted_tool_execution",
+      "/event_params/guardian_default_review_model_id": "preserve_trusted_tool_execution",
+      "/event_params/guardian_model": "preserve_trusted_tool_execution",
+      "/event_params/guardian_model_provider_id": "preserve_trusted_tool_execution",
+      "/event_params/guardian_reasoning_effort": "preserve_trusted_tool_execution",
+      "/event_params/guardian_review_model_overridden": "preserve_trusted_tool_execution",
+      "/event_params/guardian_review_model_override": "preserve_trusted_tool_execution",
+      "/event_params/guardian_session_kind": "preserve_trusted_tool_execution",
+      "/event_params/guardian_thread_id": "preserve_trusted_tool_execution",
+      "/event_params/had_prior_review_context": "preserve_trusted_tool_execution",
+      "/event_params/input_tokens": "preserve_trusted_tool_execution",
+      "/event_params/outcome": "preserve_trusted_tool_execution",
+      "/event_params/output_tokens": "preserve_trusted_tool_execution",
+      "/event_params/reasoning_output_tokens": "preserve_trusted_tool_execution",
+      "/event_params/review_id": "preserve_trusted_tool_execution",
+      "/event_params/review_timeout_ms": "preserve_trusted_tool_execution",
+      "/event_params/reviewed_action": "preserve_trusted_tool_execution",
+      "/event_params/reviewed_action_truncated": "preserve_trusted_tool_execution",
+      "/event_params/risk_level": "preserve_trusted_tool_execution",
+      "/event_params/runtime": "preserve_native_environment",
+      "/event_params/session_id": "preserve_native_environment",
+      "/event_params/started_at": "preserve_trusted_tool_execution",
+      "/event_params/target_item_id": "preserve_trusted_tool_execution",
+      "/event_params/terminal_status": "preserve_trusted_tool_execution",
+      "/event_params/thread_id": "preserve_native_environment",
+      "/event_params/time_to_first_token_ms": "preserve_trusted_tool_execution",
+      "/event_params/tool_call_count": "preserve_trusted_tool_execution",
+      "/event_params/total_tokens": "preserve_trusted_tool_execution",
+      "/event_params/turn_id": "preserve_native_environment",
+      "/event_params/user_authorization": "preserve_trusted_tool_execution"
+    },
+    "codex_guardian_v2_classification": {
+      "/event_params/app_server_client": "preserve_native_environment",
+      "/event_params/decision": "preserve_trusted_tool_execution",
+      "/event_params/duration_ms": "preserve_trusted_tool_execution",
+      "/event_params/item_id": "preserve_trusted_tool_execution",
+      "/event_params/model": "replace_business_request",
+      "/event_params/occurred_at_ms": "preserve_trusted_tool_execution",
+      "/event_params/outcome": "preserve_trusted_tool_execution",
+      "/event_params/parent_thread_id": "preserve_native_environment",
+      "/event_params/risk_level": "preserve_trusted_tool_execution",
+      "/event_params/runtime": "preserve_native_environment",
+      "/event_params/session_id": "preserve_native_environment",
+      "/event_params/subagent_source": "preserve_native_environment",
+      "/event_params/thread_id": "preserve_native_environment",
+      "/event_params/thread_source": "preserve_native_environment",
+      "/event_params/turn_id": "preserve_native_environment"
+    },
+    "codex_guardian_v2_fast_decision": {
+      "/event_params/app_server_client": "preserve_native_environment",
+      "/event_params/decision": "preserve_trusted_tool_execution",
+      "/event_params/duration_ms": "preserve_trusted_tool_execution",
+      "/event_params/item_id": "preserve_trusted_tool_execution",
+      "/event_params/model": "replace_business_request",
+      "/event_params/occurred_at_ms": "preserve_trusted_tool_execution",
+      "/event_params/outcome": "preserve_trusted_tool_execution",
+      "/event_params/parent_thread_id": "preserve_native_environment",
+      "/event_params/risk_level": "preserve_trusted_tool_execution",
+      "/event_params/runtime": "preserve_native_environment",
+      "/event_params/session_id": "preserve_native_environment",
+      "/event_params/subagent_source": "preserve_native_environment",
+      "/event_params/thread_id": "preserve_native_environment",
+      "/event_params/thread_source": "preserve_native_environment",
+      "/event_params/turn_id": "preserve_native_environment"
+    },
+    "codex_hook_run": {
+      "/event_params/execution_mode": "preserve_trusted_tool_execution",
+      "/event_params/handler_type": "preserve_trusted_tool_execution",
+      "/event_params/hook_name": "preserve_trusted_tool_execution",
+      "/event_params/hook_source": "preserve_trusted_tool_execution",
+      "/event_params/model_slug": "replace_business_request",
+      "/event_params/product_client_id": "preserve_native_environment",
+      "/event_params/status": "preserve_trusted_tool_execution",
+      "/event_params/thread_id": "preserve_native_environment",
+      "/event_params/turn_id": "preserve_native_environment"
+    },
+    "codex_image_generation_event": {
+      "/event_params/app_server_client": "preserve_native_environment",
+      "/event_params/cell_id": "preserve_trusted_tool_execution",
+      "/event_params/completed_at_ms": "preserve_trusted_tool_execution",
+      "/event_params/duration_ms": "preserve_trusted_tool_execution",
+      "/event_params/execution_duration_ms": "preserve_trusted_tool_execution",
+      "/event_params/failure_kind": "preserve_trusted_tool_execution",
+      "/event_params/final_approval_outcome": "preserve_trusted_tool_execution",
+      "/event_params/generation_id": "preserve_trusted_tool_execution",
+      "/event_params/guardian_review_count": "preserve_trusted_tool_execution",
+      "/event_params/imagegen_request_id": "preserve_trusted_tool_execution",
+      "/event_params/item_id": "preserve_trusted_tool_execution",
+      "/event_params/originating_response_id": "replace_business_response",
+      "/event_params/parent_call_id": "preserve_trusted_tool_execution",
+      "/event_params/parent_thread_id": "preserve_native_environment",
+      "/event_params/requested_additional_permissions": "preserve_trusted_tool_execution",
+      "/event_params/requested_network_access": "preserve_trusted_tool_execution",
+      "/event_params/review_count": "preserve_trusted_tool_execution",
+      "/event_params/revised_prompt_present": "preserve_trusted_tool_execution",
+      "/event_params/root_turn_id": "preserve_native_environment",
+      "/event_params/runtime": "preserve_native_environment",
+      "/event_params/saved_path_present": "preserve_trusted_tool_execution",
+      "/event_params/session_id": "preserve_native_environment",
+      "/event_params/started_at_ms": "preserve_trusted_tool_execution",
+      "/event_params/subagent_source": "preserve_native_environment",
+      "/event_params/subsequent_response_id": "replace_business_response",
+      "/event_params/terminal_status": "preserve_trusted_tool_execution",
+      "/event_params/thread_id": "preserve_native_environment",
+      "/event_params/thread_source": "preserve_native_environment",
+      "/event_params/tool_event_type": "preserve_trusted_tool_execution",
+      "/event_params/tool_name": "preserve_trusted_tool_execution",
+      "/event_params/transparent_background": "preserve_trusted_tool_execution",
+      "/event_params/turn_id": "preserve_native_environment",
+      "/event_params/user_review_count": "preserve_trusted_tool_execution"
+    },
+    "codex_mcp_tool_call_event": {
+      "/event_params/app_server_client": "preserve_native_environment",
+      "/event_params/cell_id": "preserve_trusted_tool_execution",
+      "/event_params/completed_at_ms": "preserve_trusted_tool_execution",
+      "/event_params/connector_id": "preserve_trusted_tool_execution",
+      "/event_params/duration_ms": "preserve_trusted_tool_execution",
+      "/event_params/elicitation_type": "preserve_trusted_tool_execution",
+      "/event_params/execution_duration_ms": "preserve_trusted_tool_execution",
+      "/event_params/failure_kind": "preserve_trusted_tool_execution",
+      "/event_params/final_approval_outcome": "preserve_trusted_tool_execution",
+      "/event_params/guardian_review_count": "preserve_trusted_tool_execution",
+      "/event_params/item_id": "preserve_trusted_tool_execution",
+      "/event_params/mcp_error_present": "preserve_trusted_tool_execution",
+      "/event_params/mcp_server_name": "preserve_trusted_tool_execution",
+      "/event_params/mcp_tool_name": "preserve_trusted_tool_execution",
+      "/event_params/originating_response_id": "replace_business_response",
+      "/event_params/parent_call_id": "preserve_trusted_tool_execution",
+      "/event_params/parent_thread_id": "preserve_native_environment",
+      "/event_params/plugin_id": "preserve_trusted_tool_execution",
+      "/event_params/requested_additional_permissions": "preserve_trusted_tool_execution",
+      "/event_params/requested_network_access": "preserve_trusted_tool_execution",
+      "/event_params/review_count": "preserve_trusted_tool_execution",
+      "/event_params/root_turn_id": "preserve_native_environment",
+      "/event_params/runtime": "preserve_native_environment",
+      "/event_params/session_id": "preserve_native_environment",
+      "/event_params/started_at_ms": "preserve_trusted_tool_execution",
+      "/event_params/subagent_source": "preserve_native_environment",
+      "/event_params/subsequent_response_id": "replace_business_response",
+      "/event_params/terminal_status": "preserve_trusted_tool_execution",
+      "/event_params/thread_id": "preserve_native_environment",
+      "/event_params/thread_source": "preserve_native_environment",
+      "/event_params/tool_event_type": "preserve_trusted_tool_execution",
+      "/event_params/tool_name": "preserve_trusted_tool_execution",
+      "/event_params/turn_id": "preserve_native_environment",
+      "/event_params/user_review_count": "preserve_trusted_tool_execution",
+      "/event_params/voice_session_id": "preserve_trusted_tool_execution"
+    },
+    "codex_onboarding_external_agent_import_complete": {
+      "/event_params/failed_count": "preserve_native_activity",
+      "/event_params/import_id": "preserve_native_activity",
+      "/event_params/product_client_id": "preserve_native_environment",
+      "/event_params/provider_id": "preserve_native_activity",
+      "/event_params/source": "preserve_native_activity",
+      "/event_params/success_count": "preserve_native_activity",
+      "/event_params/type": "preserve_native_activity"
+    },
+    "codex_onboarding_external_agent_import_failure": {
+      "/event_params/error_type": "preserve_native_activity",
+      "/event_params/failure_stage": "preserve_native_activity",
+      "/event_params/import_id": "preserve_native_activity",
+      "/event_params/product_client_id": "preserve_native_environment",
+      "/event_params/provider_id": "preserve_native_activity",
+      "/event_params/source": "preserve_native_activity",
+      "/event_params/sub_error_type": "preserve_native_activity",
+      "/event_params/type": "preserve_native_activity"
+    },
+    "codex_plugin_disabled": {
+      "/event_params/connector_ids": "preserve_native_activity",
+      "/event_params/has_skills": "preserve_native_activity",
+      "/event_params/marketplace_name": "preserve_native_activity",
+      "/event_params/mcp_server_count": "preserve_native_activity",
+      "/event_params/plugin_id": "preserve_native_activity",
+      "/event_params/plugin_name": "preserve_native_activity",
+      "/event_params/product_client_id": "preserve_native_environment",
+      "/event_params/remote_plugin_id": "preserve_native_activity"
+    },
+    "codex_plugin_enabled": {
+      "/event_params/connector_ids": "preserve_native_activity",
+      "/event_params/has_skills": "preserve_native_activity",
+      "/event_params/marketplace_name": "preserve_native_activity",
+      "/event_params/mcp_server_count": "preserve_native_activity",
+      "/event_params/plugin_id": "preserve_native_activity",
+      "/event_params/plugin_name": "preserve_native_activity",
+      "/event_params/product_client_id": "preserve_native_environment",
+      "/event_params/remote_plugin_id": "preserve_native_activity"
+    },
+    "codex_plugin_install_failed": {
+      "/event_params/connector_ids": "preserve_native_activity",
+      "/event_params/error_type": "preserve_native_activity",
+      "/event_params/has_skills": "preserve_native_activity",
+      "/event_params/marketplace_name": "preserve_native_activity",
+      "/event_params/mcp_server_count": "preserve_native_activity",
+      "/event_params/plugin_id": "preserve_native_activity",
+      "/event_params/plugin_name": "preserve_native_activity",
+      "/event_params/product_client_id": "preserve_native_environment",
+      "/event_params/remote_plugin_id": "preserve_native_activity",
+      "/event_params/source": "preserve_native_activity",
+      "/event_params/sub_error_type": "preserve_native_activity"
+    },
+    "codex_plugin_install_requested": {
+      "/event_params/model_slug": "replace_business_request",
+      "/event_params/plugins": "preserve_trusted_tool_execution",
+      "/event_params/product_client_id": "preserve_native_environment",
+      "/event_params/source": "preserve_trusted_tool_execution",
+      "/event_params/suggestion_id": "preserve_trusted_tool_execution",
+      "/event_params/thread_id": "preserve_native_environment",
+      "/event_params/turn_id": "preserve_native_environment"
+    },
+    "codex_plugin_installed": {
+      "/event_params/connector_ids": "preserve_native_activity",
+      "/event_params/has_skills": "preserve_native_activity",
+      "/event_params/marketplace_name": "preserve_native_activity",
+      "/event_params/mcp_server_count": "preserve_native_activity",
+      "/event_params/plugin_id": "preserve_native_activity",
+      "/event_params/plugin_name": "preserve_native_activity",
+      "/event_params/product_client_id": "preserve_native_environment",
+      "/event_params/remote_plugin_id": "preserve_native_activity"
+    },
+    "codex_plugin_measurement_event": {
+      "/event_params/dimensions": "preserve_trusted_tool_execution",
+      "/event_params/execution_id": "preserve_trusted_tool_execution",
+      "/event_params/item_id": "preserve_trusted_tool_execution",
+      "/event_params/measurement_name": "preserve_trusted_tool_execution",
+      "/event_params/model_slug": "replace_business_request",
+      "/event_params/number_value": "preserve_trusted_tool_execution",
+      "/event_params/operation": "preserve_trusted_tool_execution",
+      "/event_params/originator": "preserve_native_environment",
+      "/event_params/plugin_id": "preserve_trusted_tool_execution",
+      "/event_params/reasoning_effort": "replace_business_request",
+      "/event_params/thread_id": "preserve_native_environment",
+      "/event_params/turn_id": "preserve_native_environment"
+    },
+    "codex_plugin_uninstalled": {
+      "/event_params/connector_ids": "preserve_native_activity",
+      "/event_params/has_skills": "preserve_native_activity",
+      "/event_params/marketplace_name": "preserve_native_activity",
+      "/event_params/mcp_server_count": "preserve_native_activity",
+      "/event_params/plugin_id": "preserve_native_activity",
+      "/event_params/plugin_name": "preserve_native_activity",
+      "/event_params/product_client_id": "preserve_native_environment",
+      "/event_params/remote_plugin_id": "preserve_native_activity"
+    },
+    "codex_plugin_used": {
+      "/event_params/connector_ids": "preserve_trusted_tool_execution",
+      "/event_params/has_skills": "preserve_trusted_tool_execution",
+      "/event_params/marketplace_name": "preserve_trusted_tool_execution",
+      "/event_params/mcp_server_count": "preserve_trusted_tool_execution",
+      "/event_params/mcp_server_names": "preserve_trusted_tool_execution",
+      "/event_params/model_slug": "replace_business_request",
+      "/event_params/plugin_id": "preserve_trusted_tool_execution",
+      "/event_params/plugin_name": "preserve_trusted_tool_execution",
+      "/event_params/product_client_id": "preserve_native_environment",
+      "/event_params/remote_plugin_id": "preserve_trusted_tool_execution",
+      "/event_params/thread_id": "preserve_native_environment",
+      "/event_params/turn_id": "preserve_native_environment"
+    },
+    "codex_review_event": {
+      "/event_params/app_server_client": "preserve_native_environment",
+      "/event_params/completed_at_ms": "preserve_trusted_tool_execution",
+      "/event_params/duration_ms": "preserve_trusted_tool_execution",
+      "/event_params/item_id": "preserve_trusted_tool_execution",
+      "/event_params/parent_thread_id": "preserve_native_environment",
+      "/event_params/resolution": "preserve_trusted_tool_execution",
+      "/event_params/review_id": "preserve_trusted_tool_execution",
+      "/event_params/reviewer": "preserve_trusted_tool_execution",
+      "/event_params/runtime": "preserve_native_environment",
+      "/event_params/started_at_ms": "preserve_trusted_tool_execution",
+      "/event_params/status": "preserve_trusted_tool_execution",
+      "/event_params/subagent_source": "preserve_native_environment",
+      "/event_params/subject_kind": "preserve_trusted_tool_execution",
+      "/event_params/subject_name": "preserve_trusted_tool_execution",
+      "/event_params/thread_id": "preserve_native_environment",
+      "/event_params/thread_source": "preserve_native_environment",
+      "/event_params/trigger": "preserve_trusted_tool_execution",
+      "/event_params/turn_id": "preserve_native_environment"
+    },
+    "codex_thread_archive_event": {
+      "/event_params/action": "preserve_native_activity",
+      "/event_params/app_server_client": "preserve_native_environment",
+      "/event_params/occurred_at_ms": "preserve_native_activity",
+      "/event_params/parent_thread_id": "preserve_native_environment",
+      "/event_params/runtime": "preserve_native_environment",
+      "/event_params/thread_id": "preserve_native_environment",
+      "/event_params/thread_source": "preserve_native_environment"
+    },
+    "codex_thread_hint_status": {
+      "/event_params/app_server_client": "preserve_native_environment",
+      "/event_params/occurred_at_ms": "preserve_native_activity",
+      "/event_params/parent_thread_id": "preserve_native_environment",
+      "/event_params/runtime": "preserve_native_environment",
+      "/event_params/session_id": "preserve_native_environment",
+      "/event_params/status": "preserve_native_activity",
+      "/event_params/subagent_source": "preserve_native_environment",
+      "/event_params/thread_id": "preserve_native_environment",
+      "/event_params/thread_source": "preserve_native_environment"
+    },
+    "codex_thread_initialized": {
+      "/event_params/app_server_client": "preserve_native_environment",
+      "/event_params/created_at": "preserve_native_environment",
+      "/event_params/ephemeral": "preserve_native_environment",
+      "/event_params/forked_from_thread_id": "preserve_native_environment",
+      "/event_params/initialization_mode": "preserve_native_environment",
+      "/event_params/is_worktree": "preserve_native_environment",
+      "/event_params/model": "preserve_native_environment",
+      "/event_params/parent_thread_id": "preserve_native_environment",
+      "/event_params/runtime": "preserve_native_environment",
+      "/event_params/session_id": "preserve_native_environment",
+      "/event_params/subagent_source": "preserve_native_environment",
+      "/event_params/thread_id": "preserve_native_environment",
+      "/event_params/thread_source": "preserve_native_environment"
+    },
+    "codex_turn_event": {
+      "/event_params/active_plugin_ids_at_turn_start": "replace_complete_business_turn",
+      "/event_params/after_last_sampling_ms": "preserve_native_activity",
+      "/event_params/app_server_client": "preserve_native_environment",
+      "/event_params/approval_policy": "preserve_native_environment",
+      "/event_params/approvals_reviewer": "preserve_native_environment",
+      "/event_params/before_first_sampling_ms": "preserve_native_activity",
+      "/event_params/between_sampling_overhead_ms": "preserve_native_activity",
+      "/event_params/cache_write_input_tokens": "replace_complete_business_turn",
+      "/event_params/cached_input_tokens": "replace_complete_business_turn",
+      "/event_params/codex_error_http_status_code": "replace_complete_business_turn",
+      "/event_params/codex_error_kind": "replace_complete_business_turn",
+      "/event_params/codex_turn_source": "preserve_native_activity",
+      "/event_params/collaboration_mode": "preserve_native_environment",
+      "/event_params/compaction_ms": "preserve_native_activity",
+      "/event_params/completed_at": "preserve_native_activity",
+      "/event_params/duration_ms": "preserve_native_activity",
+      "/event_params/dynamic_tool_call_count": "replace_complete_business_turn",
+      "/event_params/ephemeral": "preserve_native_environment",
+      "/event_params/explicit_client_interrupt_requested_at_ms": "preserve_native_activity",
+      "/event_params/file_change_count": "replace_complete_business_turn",
+      "/event_params/guardian_v2_enabled": "preserve_native_environment",
+      "/event_params/image_generation_count": "replace_complete_business_turn",
+      "/event_params/image_preparations": "replace_business_request",
+      "/event_params/initialization_mode": "preserve_native_environment",
+      "/event_params/input_tokens": "replace_complete_business_turn",
+      "/event_params/is_first_turn": "preserve_native_environment",
+      "/event_params/mcp_tool_call_count": "replace_complete_business_turn",
+      "/event_params/model": "replace_business_request",
+      "/event_params/model_provider": "preserve_native_environment",
+      "/event_params/num_input_images": "replace_business_request",
+      "/event_params/output_tokens": "replace_complete_business_turn",
+      "/event_params/parent_thread_id": "preserve_native_environment",
+      "/event_params/personality": "preserve_native_environment",
+      "/event_params/reasoning_effort": "replace_business_request",
+      "/event_params/reasoning_output_tokens": "replace_complete_business_turn",
+      "/event_params/reasoning_summary": "replace_business_request",
+      "/event_params/root_turn_id": "preserve_native_environment",
+      "/event_params/runtime": "preserve_native_environment",
+      "/event_params/sampling_ms": "preserve_native_activity",
+      "/event_params/sampling_request_count": "preserve_native_activity",
+      "/event_params/sampling_retry_count": "preserve_native_activity",
+      "/event_params/sandbox_network_access": "preserve_native_environment",
+      "/event_params/sandbox_policy": "preserve_native_environment",
+      "/event_params/service_tier": "replace_business_request",
+      "/event_params/session_id": "preserve_native_environment",
+      "/event_params/shell_command_count": "replace_complete_business_turn",
+      "/event_params/started_at": "preserve_native_activity",
+      "/event_params/status": "replace_complete_business_turn",
+      "/event_params/steer_count": "replace_complete_business_turn",
+      "/event_params/subagent_source": "preserve_native_environment",
+      "/event_params/subagent_tool_call_count": "replace_complete_business_turn",
+      "/event_params/submission_type": "preserve_native_activity",
+      "/event_params/thread_id": "preserve_native_environment",
+      "/event_params/thread_source": "preserve_native_environment",
+      "/event_params/tool_blocking_ms": "preserve_native_activity",
+      "/event_params/total_tokens": "replace_complete_business_turn",
+      "/event_params/total_tool_call_count": "replace_complete_business_turn",
+      "/event_params/turn_error": "replace_complete_business_turn",
+      "/event_params/turn_id": "preserve_native_environment",
+      "/event_params/turn_trigger": "preserve_native_activity",
+      "/event_params/usage_limit_window_minutes": "replace_complete_business_turn",
+      "/event_params/voice_session_id": "replace_complete_business_turn",
+      "/event_params/web_search_count": "replace_complete_business_turn",
+      "/event_params/workspace_kind": "preserve_native_environment"
+    },
+    "codex_turn_steer_event": {
+      "/event_params/accepted_turn_id": "preserve_native_environment",
+      "/event_params/app_server_client": "preserve_native_environment",
+      "/event_params/created_at": "preserve_native_environment",
+      "/event_params/expected_turn_id": "preserve_native_environment",
+      "/event_params/num_input_images": "replace_business_request",
+      "/event_params/parent_thread_id": "preserve_native_environment",
+      "/event_params/rejection_reason": "replace_complete_business_turn",
+      "/event_params/result": "replace_complete_business_turn",
+      "/event_params/runtime": "preserve_native_environment",
+      "/event_params/session_id": "preserve_native_environment",
+      "/event_params/subagent_source": "preserve_native_environment",
+      "/event_params/thread_id": "preserve_native_environment",
+      "/event_params/thread_source": "preserve_native_environment"
+    },
+    "codex_web_search_event": {
+      "/event_params/app_server_client": "preserve_native_environment",
+      "/event_params/cell_id": "preserve_trusted_tool_execution",
+      "/event_params/completed_at_ms": "preserve_trusted_tool_execution",
+      "/event_params/duration_ms": "preserve_trusted_tool_execution",
+      "/event_params/execution_duration_ms": "preserve_trusted_tool_execution",
+      "/event_params/failure_kind": "preserve_trusted_tool_execution",
+      "/event_params/final_approval_outcome": "preserve_trusted_tool_execution",
+      "/event_params/guardian_review_count": "preserve_trusted_tool_execution",
+      "/event_params/item_id": "preserve_trusted_tool_execution",
+      "/event_params/originating_response_id": "replace_business_response",
+      "/event_params/parent_call_id": "preserve_trusted_tool_execution",
+      "/event_params/parent_thread_id": "preserve_native_environment",
+      "/event_params/query_count": "preserve_trusted_tool_execution",
+      "/event_params/query_present": "preserve_trusted_tool_execution",
+      "/event_params/requested_additional_permissions": "preserve_trusted_tool_execution",
+      "/event_params/requested_network_access": "preserve_trusted_tool_execution",
+      "/event_params/review_count": "preserve_trusted_tool_execution",
+      "/event_params/root_turn_id": "preserve_native_environment",
+      "/event_params/runtime": "preserve_native_environment",
+      "/event_params/session_id": "preserve_native_environment",
+      "/event_params/started_at_ms": "preserve_trusted_tool_execution",
+      "/event_params/subagent_source": "preserve_native_environment",
+      "/event_params/subsequent_response_id": "replace_business_response",
+      "/event_params/terminal_status": "preserve_trusted_tool_execution",
+      "/event_params/thread_id": "preserve_native_environment",
+      "/event_params/thread_source": "preserve_native_environment",
+      "/event_params/tool_event_type": "preserve_trusted_tool_execution",
+      "/event_params/tool_name": "preserve_trusted_tool_execution",
+      "/event_params/turn_id": "preserve_native_environment",
+      "/event_params/user_review_count": "preserve_trusted_tool_execution",
+      "/event_params/web_search_action": "preserve_trusted_tool_execution"
+    },
+    "skill_invocation": {
+      "/event_params/invoke_type": "preserve_trusted_tool_execution",
+      "/event_params/model_slug": "replace_business_request",
+      "/event_params/plugin_id": "preserve_trusted_tool_execution",
+      "/event_params/product_client_id": "preserve_native_environment",
+      "/event_params/remote_plugin_id": "preserve_trusted_tool_execution",
+      "/event_params/skill_scope": "preserve_trusted_tool_execution",
+      "/event_params/thread_id": "preserve_native_environment",
+      "/event_params/turn_id": "preserve_native_environment",
+      "/event_params/voice_session_id": "preserve_trusted_tool_execution",
+      "/skill_id": "preserve_trusted_tool_execution",
+      "/skill_name": "preserve_trusted_tool_execution"
+    }
+  },
+  "profile_version": "codex-rust-v0.160.0-telemetry-v1",
+  "qualification": "candidate_pending_runtime_adaptation_and_joint_verification",
+  "release_tag": "rust-v0.160.0",
+  "source_blobs": {
+    "codex-rs/analytics/src/accepted_lines.rs": "a9cddaf843af8466a80a9c7c9084ea1918f7d3cac0ddec82d3a02d211dfd782f",
+    "codex-rs/analytics/src/events.rs": "97434c1d2f8ea6741823b203d45c9765292e4bea2f7204d518d18c57c403961b",
+    "codex-rs/analytics/src/facts.rs": "d5cb475d2a4e6c6aee00d1aedd5d101be88b391babcd7f1c5947e757c383add2",
+    "codex-rs/analytics/src/guardian_v2.rs": "61af7b822a9e1f4bbd27c99054d20741dbce75051c0b758d61cb2c2d8c462222",
+    "codex-rs/analytics/src/reducer.rs": "88530e964108d2569645ea7474d058ac56f93fae5546bc41dbb5557b278feaad",
+    "codex-rs/analytics/src/thread_hint.rs": "aa09927313b645c51740dee64bf6c3a2b82e19b617e767c3821b38194b7cfa9d",
+    "codex-rs/app-server-protocol/src/protocol/v2/item.rs": "cf58812aafce8d213090d430b62585477351738b5a90354ed07be338cf9ad06d",
+    "codex-rs/app-server-protocol/src/protocol/v2/shared.rs": "4d31555109d47952dbff739b827ea321ec66dce6e8497e824c4eed9adaefeca1",
+    "codex-rs/core/src/guardian/decision.rs": "30a0845a9f9be6ed363edde676ae2e6a2f4609daca8ab438cca1964f7f3aa795",
+    "codex-rs/ext/guardian-v2/src/async_scorer/extension.rs": "e3ca0a3b32c4928fa9900e658c2c5cf8477a39334ef10b81cbbfcc945651023b",
+    "codex-rs/protocol/src/approvals.rs": "0b69b4b186d30c96049c57277735fd5ca6be2d9c25662f665a6bd1898f54b0a2",
+    "codex-rs/protocol/src/error.rs": "7cda4a589cec5c36f73ca3c3754adbde372bbf9cae6d4c0d34445a43e54ee646",
+    "codex-rs/protocol/src/models.rs": "916a595e136f4d7e32ce259f50678ffe818af2ea6a92f54d8628f57bfd4d43e7",
+    "codex-rs/protocol/src/permissions.rs": "78a1c80b9b5cda29c563538d90003005d26c411eea533bd00db54a185a6aed54",
+    "codex-rs/protocol/src/protocol.rs": "d3d3d384da91b2824c10091de4331a2bc26ec5474887ed0aef1e3f3c4ae110f4",
+    "codex-rs/state/src/model/thread_goal.rs": "f94048f33d94e8489fe28bf81a81d98a71327ce8bfe5178e0c539d6bcaf67a9e",
+    "codex-rs/utils/absolute-path/src/lib.rs": "95bc4b5f1964bad524db458b6bb4220c9fe1e69b9d77b5d03347c402e441d3ea",
+    "codex-rs/utils/path-uri/src/api_path_string.rs": "f04f388613b648a134b46e211ffa3f2001f97abbc2675df1c358bab57a2dcdd4"
+  },
+  "source_commit": "a956835d020762cb2b570053af06f643a11c0ecc",
+  "source_ref": "rust-v0.160.0",
+  "tag_object": "79b1b666f2e8551f8abbbca34957227f67f3f553"
+}

@@ -1,0 +1,15 @@
+right-codex
+Copyright 2026 right-codex contributors
+
+This project includes OpenAI Codex source and derived network/OAuth adapters
+under the Apache License, Version 2.0.
+
+OpenAI Codex
+Copyright 2025 OpenAI
+Upstream repository: https://github.com/openai/codex
+Pinned upstream commit: a956835d020762cb2b570053af06f643a11c0ecc
+
+The original upstream LICENSE and NOTICE, including third-party attributions,
+are retained in vendor/codex. Files with their own license notices remain
+subject to those notices. This is an independent project, not an official
+OpenAI product.

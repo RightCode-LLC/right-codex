@@ -1,0 +1,329 @@
+{
+  "manifest_version": 1,
+  "release_tag": "rust-v0.160.0",
+  "source_commit": "a956835d020762cb2b570053af06f643a11c0ecc",
+  "purpose": "protocol-only gateway source review seed",
+  "qualification": {
+    "source_blob_existence_and_digest_verified": true,
+    "complete_network_entry_inventory": false,
+    "complete_feature_branch_coverage": false,
+    "runtime_implemented": false,
+    "differential_qualified": false,
+    "deployed": false
+  },
+  "modules": [
+    {
+      "module": "oauth",
+      "scope": "Browser PKCE, Device Code, token persistence/refresh and unauthorized recovery",
+      "implementation_status": "not_implemented_in_protocol_gateway",
+      "sources": [
+        {
+          "path": "codex-rs/login/src/lib.rs",
+          "git_blob": "abbbf1d8977e4efe31cf17e561a76a9e1bd76e0d",
+          "sha256": "c83451696298640d03f5d27a86943358bd811fbba610265aa8ccbb20f446af5a"
+        },
+        {
+          "path": "codex-rs/login/src/server.rs",
+          "git_blob": "d9dcb321563f3c0fa407ddf338c56575c71e3a10",
+          "sha256": "17b49a6da8fb54ec6d43efa037fbd867291c804038329035929322e15de830c8"
+        },
+        {
+          "path": "codex-rs/login/src/device_code_auth.rs",
+          "git_blob": "f9f8f1993bf4b2792dd66b72a7f4e1592824d768",
+          "sha256": "a66f531d5cc5257ba99ec796f69e02f78bab1812bbde57b5aa809237910b3829"
+        },
+        {
+          "path": "codex-rs/login/src/auth/manager.rs",
+          "git_blob": "14cfee92212f83f2a9b17aa2d3fe6492e018c4e2",
+          "sha256": "01cb49b1cca566dddc47def60b52848da0717c7de6a33d8b7160b6fc4cafd881"
+        },
+        {
+          "path": "codex-rs/login/src/oauth/client.rs",
+          "git_blob": "f9a1d453d563487b72285128bbaa7fc78df20dc6",
+          "sha256": "dd68af96c58415d85521debb6136ebf1ed1f86658a903af4144a3dda6d71ccdd"
+        },
+        {
+          "path": "codex-rs/login/src/auth/default_client.rs",
+          "git_blob": "28a952ea2d7affef05648affdc74f275efcf9680",
+          "sha256": "174e02e439013bf75cccdcfd36b9c23e31d9ee84835a0cc0b1f9d7a33391a064"
+        }
+      ]
+    },
+    {
+      "module": "account_route_and_http",
+      "scope": "Account-owned route discovery, headers, retries, transport and proxy policy",
+      "implementation_status": "partial_static_account_http_no_route_discovery",
+      "sources": [
+        {
+          "path": "codex-rs/login/src/auth/manager/workspace_routing.rs",
+          "git_blob": "08682a7506e3cb9f9d5cfdb7f131789af825523a",
+          "sha256": "876f029d3d706efbd7889adc3538f548fa676fc01ed4a59297993b137cc526aa"
+        },
+        {
+          "path": "codex-rs/model-provider/src/lib.rs",
+          "git_blob": "2eefe68bb79fb83f32c61de5125c4b846a812377",
+          "sha256": "0ec8bc9a91e752099602042e33152e3a6c1477d2ca757ab54cb1489a5a94d1f2"
+        },
+        {
+          "path": "codex-rs/codex-api/src/provider.rs",
+          "git_blob": "97e5db155c489a31f22488f53a93ca01dbaed0dd",
+          "sha256": "d2dc59b0872b40d60eaed12322e14490f582c03ca92347f1b0cbdd1842744154"
+        },
+        {
+          "path": "codex-rs/codex-api/src/endpoint/session.rs",
+          "git_blob": "7849225b5cbb6c37456d14e85b3fe069d878ada3",
+          "sha256": "355cc0f030ab32d21b3e6fcce569a15a59958fecdda85423bf05642497bdb1eb"
+        },
+        {
+          "path": "codex-rs/codex-client/src/retry.rs",
+          "git_blob": "b10fa50794de347b73a76c83d0b6b36e055a7842",
+          "sha256": "4e61c0e5e5037866706863c32780748ec82e114160ec759a582621de0aad4c06"
+        },
+        {
+          "path": "codex-rs/app-server/src/request_processors/account_processor/workspace_routing.rs",
+          "git_blob": "3eedf082f5c9a9a750cf882dbed4aac7c173eff8",
+          "sha256": "2d2e1badd55ac8805ac344f8b921ac10d7f6bc0b8b9679108ddb3bb288f09c92"
+        },
+        {
+          "path": "codex-rs/backend-client/src/client.rs",
+          "git_blob": "54bf0ff48dfbba4f6059a38bef312eb2ef84478c",
+          "sha256": "e1d166ceb5f6f9a433907d74dc91eaa9e3900d2a43e588c21c3e2b149bca0643"
+        },
+        {
+          "path": "codex-rs/model-provider/src/workspace_routing.rs",
+          "git_blob": "267a2644465dcc1142eea4d9e497bc5cc3acc9f8",
+          "sha256": "655591ae381d4725eb101155c91669cd776d627252972ec987ae18314b33b2ab"
+        },
+        {
+          "path": "codex-rs/model-provider-info/src/lib.rs",
+          "git_blob": "5d5b1f92e58efc63ef24459db87c549285fc3119",
+          "sha256": "941a8ec0e8be4b45080cac3df3d052999a4cb104811575634b1a9ed510690958"
+        },
+        {
+          "path": "codex-rs/http-client/src/request.rs",
+          "git_blob": "b21ce6280e5fb243e56149c06938b797035433a8",
+          "sha256": "e909859af99adabad04daf3663ff77fae736e7587870a3dc3545c7d5f3ffe4a1"
+        },
+        {
+          "path": "codex-rs/http-client/src/lib.rs",
+          "git_blob": "5eb01f021b263fee0100435a2af5aec4a10c1d3b",
+          "sha256": "7f4187bf5774ecc4dbe96c43b4a71730aa696ca2d0912789ffc16e180741294f"
+        }
+      ]
+    },
+    {
+      "module": "responses_request",
+      "scope": "Request construction, Lite, ID preparation, metadata, HTTP body and headers",
+      "implementation_status": "partial_full_input_http_projection",
+      "sources": [
+        {
+          "path": "codex-rs/core/src/client.rs",
+          "git_blob": "f5ac495337fd8f29c08b0be8d5b75ba32185d7d2",
+          "sha256": "605ced35cd853fcc4e23f6edd724c96f96f74c736a45e6ea95bf5300f3ab814c"
+        },
+        {
+          "path": "codex-rs/core/src/client_common.rs",
+          "git_blob": "4e76ac5905fa077279f8e9a032ddba6152f03874",
+          "sha256": "0125e520f71798e6c31a1d0147934c0d90288ab9cc4bfce6e8374ac587f2b43a"
+        },
+        {
+          "path": "codex-rs/core/src/responses_metadata.rs",
+          "git_blob": "bfdeb3b40f524401e1a57879ab2335a45130f588",
+          "sha256": "17821e5baed960026bc9b54f0af5085883c9c057647631fcd4d0070fdb3827bd"
+        },
+        {
+          "path": "codex-rs/codex-api/src/common.rs",
+          "git_blob": "8d0d929ad09a8299213c5b7552d9e2fca37eb7d5",
+          "sha256": "1b01d4b2d7784c67e302b38d5b44aaa5ff733d8b575fb776cc4e2902ccb3a14c"
+        },
+        {
+          "path": "codex-rs/codex-api/src/endpoint/responses.rs",
+          "git_blob": "9c41a802eadd57cf20ffc733121921d8d3ba9d08",
+          "sha256": "4f2fff3da4ca3ca9fcfa40ada8e98a0229af296094e03febb4d823f32ef932c8"
+        },
+        {
+          "path": "codex-rs/codex-api/src/requests/headers.rs",
+          "git_blob": "c5cede8ac63c8d7da8aafc6323795e24c98f8da2",
+          "sha256": "98c9579a8f17327fda1792ffbf22e8d09241fdc79620c37b699d94cd9637cd47"
+        }
+      ]
+    },
+    {
+      "module": "stream_and_recovery",
+      "scope": "WS, SSE, interruption, retries and fallback; HTTP-only is a separate supported subset",
+      "implementation_status": "partial_http_sse_no_ws_or_recovery",
+      "sources": [
+        {
+          "path": "codex-rs/codex-api/src/endpoint/responses_websocket.rs",
+          "git_blob": "7f3ebd7aac30c00b4c42fedc0f7dee5bc79aef68",
+          "sha256": "e2af597f23bc95c54854dd0520eb85a8e5026c660e2a7eb10e5cd38f6817eeff"
+        },
+        {
+          "path": "codex-rs/codex-api/src/sse/responses.rs",
+          "git_blob": "6b2a7ed47cb662f375f47bcac908b8c17bedc75e",
+          "sha256": "327127fb7e6886b0ffe73c74c753cc44b2c09e72c090600a861756334397cd2b"
+        },
+        {
+          "path": "codex-rs/codex-api/src/telemetry.rs",
+          "git_blob": "91918a65b92d69ddb9198ced8101a24277394eeb",
+          "sha256": "25524333a8131297e0fd04c5b869417b53e9f704377febb64be70d01df8ffdb9"
+        },
+        {
+          "path": "codex-rs/core/src/responses_retry.rs",
+          "git_blob": "c8edc8b9d4fb3681617f2211727cd9c72d6323eb",
+          "sha256": "0a008d81033ce5eb7ab76edcd0881750ed01450c47350a6fd99077bf5a6e53c2"
+        },
+        {
+          "path": "codex-rs/codex-client/src/telemetry.rs",
+          "git_blob": "b856414d3332b25f88982dce9c97d3f5be3caa04",
+          "sha256": "440113ca2783b8f111320be66beaa2cb9aa599f4198d8d5ff0778a61e51312bb"
+        }
+      ]
+    },
+    {
+      "module": "compaction_v2",
+      "scope": "Responses compaction_trigger, history/image budgets and exact completion cardinality",
+      "implementation_status": "partial_trigger_terminal_and_owned_cipher_only",
+      "sources": [
+        {
+          "path": "codex-rs/core/src/compact_remote_v2.rs",
+          "git_blob": "013a4faca47320fb845c6a8346f93683e875556f",
+          "sha256": "7cbbfa20947076c2d32c475e0cf1acf1540eef4a0d611e197c78659c0465aca2"
+        },
+        {
+          "path": "codex-rs/core/src/compact_remote_v2_attempt.rs",
+          "git_blob": "60b5b1b7721c6b22f83311ca43f16430d1b19f73",
+          "sha256": "a090b41ffaa8e669c3c95eff70bb62caa953fecb946bb74bfed32f9121c39ea1"
+        },
+        {
+          "path": "codex-rs/core/src/compact_remote_history.rs",
+          "git_blob": "aa7cd7607eeebef75a295a4409aa8f25dc2b2d6d",
+          "sha256": "05ea05de351fccf0db0896cb7999c6c80d3d5db887b7329c5fecefb6b6f091d7"
+        },
+        {
+          "path": "codex-rs/core/src/compact_remote_v2_images.rs",
+          "git_blob": "e1ae5be0fa8633481dd98224971af9f31059685c",
+          "sha256": "8c1e68fa167fb2242152c3c91a85ac06f3eb5a5ab8bed933408c2557b4816d28"
+        }
+      ]
+    },
+    {
+      "module": "models_files_images",
+      "scope": "Related API and resource ownership; endpoint scope audit still required",
+      "implementation_status": "not_implemented_in_protocol_gateway",
+      "sources": [
+        {
+          "path": "codex-rs/codex-api/src/endpoint/models.rs",
+          "git_blob": "c00bc0115e4f79415e04e6c82fc6acffcdf1ba6f",
+          "sha256": "b63ebf34bf4ae0490419a4cd976a0e935701d65f3e2be60f000d5fa6b692ad79"
+        },
+        {
+          "path": "codex-rs/codex-api/src/files.rs",
+          "git_blob": "2534516b6000b4f9d30d5e48fbbebf9d088ea2bc",
+          "sha256": "5a4b20f1e9126bfa5d52d3d9bfa2a1bc76b20ed8b2c5e22c79d4a23fc2a7ef41"
+        },
+        {
+          "path": "codex-rs/codex-api/src/endpoint/images.rs",
+          "git_blob": "2217ce89611c7c7cb8509a4315512f8784fea867",
+          "sha256": "98894faf1a7f46d79e456ef4a195ff3ead0f46b111b112e5882ba69c86c128fc"
+        },
+        {
+          "path": "codex-rs/codex-api/src/endpoint/memories.rs",
+          "git_blob": "122ca565f70ebcd8a9cb8e53dca00a4d86210609",
+          "sha256": "45e9c9b3163f68aa4fe1fd7318afed95927c4c1b6ab73efabec31595504f89e7"
+        }
+      ]
+    },
+    {
+      "module": "analytics",
+      "scope": "Fact-dependent events, authentication filter, batching, SKU attribution and delivery",
+      "implementation_status": "not_implemented_in_protocol_gateway",
+      "sources": [
+        {
+          "path": "codex-rs/analytics/src/client.rs",
+          "git_blob": "ef310acf2cb7f631da3706488d8b52cce80650ec",
+          "sha256": "371cb5c52f08057b3091b2b9087b5ba13ebad676c7d66d8e3105722428476591"
+        },
+        {
+          "path": "codex-rs/analytics/src/events.rs",
+          "git_blob": "c5583bc004578d7b77224c612edfb75b632dd62e",
+          "sha256": "97434c1d2f8ea6741823b203d45c9765292e4bea2f7204d518d18c57c403961b"
+        },
+        {
+          "path": "codex-rs/analytics/src/facts.rs",
+          "git_blob": "442fb00dd5c123387ab9317f1a3bf054d550e173",
+          "sha256": "d5cb475d2a4e6c6aee00d1aedd5d101be88b391babcd7f1c5947e757c383add2"
+        },
+        {
+          "path": "codex-rs/analytics/src/reducer.rs",
+          "git_blob": "7640223e429f91c8b1265c05cc33607a6377c24c",
+          "sha256": "88530e964108d2569645ea7474d058ac56f93fae5546bc41dbb5557b278feaad"
+        },
+        {
+          "path": "codex-rs/analytics/src/product_attribution.rs",
+          "git_blob": "4fa872102e680415e2ae37513f09908d1e826afa",
+          "sha256": "020685b00dcd966836c580ce30b27bd04ac855d623de6dbbee225485000da211"
+        },
+        {
+          "path": "codex-rs/app-server/src/analytics_utils.rs",
+          "git_blob": "24ed12d2ad3c4fa5ad6deb9813e04fa76f2a29c0",
+          "sha256": "1467215f959bb4a5d8b8b9676679ca272668b61c85ac040ab8b390f3cf12d858"
+        }
+      ]
+    },
+    {
+      "module": "otel",
+      "scope": "Real network facts, exporters, actual runtime metadata and aggregation",
+      "implementation_status": "not_implemented_in_protocol_gateway",
+      "sources": [
+        {
+          "path": "codex-rs/otel/src/config.rs",
+          "git_blob": "69ad3b62d1da5185da30ed8b9187a7db1aa1898e",
+          "sha256": "53a9bd419c8f86fa8da64266fb5cce04808acc5e916d0eeb0c4560c03bf32d75"
+        },
+        {
+          "path": "codex-rs/otel/src/events/session_telemetry.rs",
+          "git_blob": "33f2c82037285f346892dd226f1892faf172e182",
+          "sha256": "b162e7a25d56970743a960825ccc332bf87334f8a8acdc4b18773e5a9ff72c49"
+        },
+        {
+          "path": "codex-rs/core/src/config/otel.rs",
+          "git_blob": "1d0636e993fbda1abf430e37698da43444aada7c",
+          "sha256": "6af9794a087b90c87356a31a9110064632205a1b2efd336b2fce10ac648990be"
+        }
+      ]
+    }
+  ],
+  "existing_catalogs": [
+    {
+      "path": "profiles/0.160.0/analytics-schema.json",
+      "sha256": "93f93bad583f93f8f830d57f4a7a5a3515fe13bb8a980a84828b367ae3e5676c",
+      "count": 35,
+      "qualification": "source_catalog_only"
+    },
+    {
+      "path": "profiles/0.160.0/metrics-registry.json",
+      "sha256": "c9a277c365bb644311a78aa863c8a891d14353cdcbac10e41c6cb2b928c204bb",
+      "count": 195,
+      "qualification": "source_catalog_only"
+    }
+  ],
+  "fact_boundary": {
+    "network_observations": "available to the protocol gateway",
+    "client_local_execution_and_user_actions": "not observable from model HTTP alone",
+    "client_telemetry_bypassing_model_base_url": "not intercepted without separate client routing",
+    "synthetic_app_server_facts": "prohibited",
+    "claimed_zero_omissions": false
+  },
+  "http_foundation": {
+    "runtime_subset_implemented": true,
+    "controlled_loopback_passed": true,
+    "rust_unit_tests": 27,
+    "http_integration_scenarios": 9,
+    "official_differential": false,
+    "real_oauth": false,
+    "deployed": false,
+    "coverage": "docs/PROTOCOL-COVERAGE.md",
+    "audit": "docs/HTTP-FOUNDATION-AUDIT.md"
+  }
+}

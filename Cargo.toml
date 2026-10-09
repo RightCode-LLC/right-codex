@@ -1,0 +1,69 @@
+[package]
+name = "right-codex"
+version = "0.1.0"
+edition = "2024"
+publish = false
+license = "Apache-2.0"
+repository = "https://github.com/1198722360/right-codex"
+description = "Rust protocol gateway for native Codex with isolated ChatGPT Pro OAuth accounts"
+
+[dependencies]
+anyhow = "1"
+async-stream = "0.3"
+base64 = "0.22"
+axum = { version = "0.8", features = ["json", "ws", "multipart"] }
+bytes = "1"
+chrono = { version = "0.4", features = ["serde"] }
+codex-api = { path = "vendor/codex/codex-rs/codex-api" }
+codex-backend-client = { path = "vendor/codex/codex-rs/backend-client" }
+codex-backend-openapi-models = { path = "vendor/codex/codex-rs/codex-backend-openapi-models" }
+codex-client = { path = "vendor/codex/codex-rs/codex-client" }
+codex-http-client = { path = "vendor/codex/codex-rs/http-client" }
+codex-login = { path = "vendor/codex/codex-rs/login" }
+codex-otel = { path = "vendor/codex/codex-rs/otel" }
+codex-protocol = { path = "vendor/codex/codex-rs/protocol" }
+codex-terminal-detection = { path = "vendor/codex/codex-rs/terminal-detection" }
+eventsource-stream = "0.2"
+futures-util = "0.3"
+futures = { version = "0.3", default-features = false }
+http = "1"
+httparse = "1"
+ipnet = "2"
+os_info = "3"
+opentelemetry_sdk = { version = "0.31", features = ["metrics"] }
+opentelemetry-proto = { version = "0.31", default-features = false, features = ["gen-tonic-messages", "metrics", "with-serde"] }
+prost = "0.14"
+reqwest = { version = "0.12", default-features = false, features = ["json", "stream", "rustls-tls", "socks"] }
+rustls = { version = "0.23", default-features = false, features = ["ring", "std", "tls12"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = { version = "1", features = ["raw_value", "arbitrary_precision"] }
+sha2 = "0.10"
+thiserror = "2"
+tokio = { version = "1", features = ["macros", "rt-multi-thread", "net", "signal", "sync", "time"] }
+tokio-rustls = "0.26"
+tokio-tungstenite = { version = "0.28", features = ["rustls-tls-webpki-roots", "proxy"] }
+tungstenite = { version = "0.27", features = ["deflate", "proxy"] }
+tokio-util = { version = "0.7", features = ["rt"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["fmt"] }
+url = "2"
+uuid = { version = "1", features = ["v4", "serde"] }
+zstd = "0.13"
+
+[dev-dependencies]
+tempfile = "3"
+tower = { version = "0.5", features = ["util"] }
+
+[patch.crates-io]
+crossterm = { git = "https://github.com/openai-oss-forks/crossterm", rev = "efa177859fd9623d57b9fe7ae9bf491ae1ac6ec4" }
+tokio-tungstenite = { git = "https://github.com/openai-oss-forks/tokio-tungstenite", rev = "0e5b2d73aa18dd9f0a50ee9ff199d5aef7594186" }
+tungstenite = { git = "https://github.com/openai-oss-forks/tungstenite-rs", rev = "4fffad30fe373adbdcffab9545e9e9bf4f2fc19f" }
+
+[patch."ssh://git@github.com/openai-oss-forks/tungstenite-rs.git"]
+tungstenite = { git = "https://github.com/openai-oss-forks/tungstenite-rs", rev = "4fffad30fe373adbdcffab9545e9e9bf4f2fc19f" }
+
+[profile.dev]
+debug = "line-tables-only"
+
+[lints.rust]
+unsafe_code = "forbid"

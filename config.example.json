@@ -1,0 +1,26 @@
+{
+  "listen": "127.0.0.1:18184",
+  "admin_token": "123456",
+  "state_dir": "state",
+  "trusted_networks": ["127.0.0.0/8", "::1/128"],
+  "base_url": "https://chatgpt.com/backend-api/codex",
+  "chatgpt_base_url": "https://chatgpt.com/backend-api",
+  "oauth_issuer": "https://auth.openai.com",
+  "request_timeout_secs": 300,
+  "queue_timeout_secs": 60,
+  "scheduling": {
+    "max_sessions_by_account_age": [2, 4, 8, 16, 32],
+    "idle_timeout_secs": 300,
+    "startup_spacing_secs": 2,
+    "rest_interval_minutes": 0,
+    "rest_percent": 0,
+    "rest_duration_minutes": 0
+  },
+  "telemetry": {
+    "official_metrics_enabled": true,
+    "max_batch": 128,
+    "ttl_seconds": 86400,
+    "retry_backoff_seconds": 5
+  },
+  "accounts": []
+}

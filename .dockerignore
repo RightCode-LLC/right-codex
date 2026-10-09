@@ -1,0 +1,8 @@
+.git
+target
+var
+state
+config.json
+.env
+__pycache__
+AGENTS.md
