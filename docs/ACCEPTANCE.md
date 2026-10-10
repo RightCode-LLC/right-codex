@@ -111,7 +111,7 @@
 - [x] WS拒绝握手分片/长正文/chunked/截断、错误单次交付后关闭、闲置401/response.failed、会话锁占用、其它已开连接停调度及持久化失败反例通过。
 - [x] Retry-After在收到头时固定倒计时，正文延迟消耗原等待时长；过期后不重启冷却，正文实际未来resets_at仍独立生效。
 - [x] 最终197项回归、严格Clippy和macOS debug构建；最终产物原版受控12案/4组消费者差分通过，报告`native-control-header-p9_ylij0/report.json`。
-- [ ] 真实双Pro及生产HTTPS/代理联合、Linux镜像和部署未在本轮执行。
+- [ ] 真实双Pro及生产HTTPS/代理联合、生产部署；当前Linux镜像启动核验见公开发行章节。
 
 ## right-codex 更名验收（2026-10-10）
 
@@ -126,8 +126,10 @@
 - [x] GitHub公开空仓库及推送权限、Docker Hub本机登录身份已核对；发布范围为本项目源码与运行镜像。
 - [x] Apache-2.0与上游NOTICE随源码和镜像保留；个人指令、账号凭据、配置、状态和私有原包排除。
 - [x] 发布脚本一次构建amd64/arm64，并校验时间戳和latest的远端索引；Compose改为直接拉取镜像。
-- [ ] Git索引与8775项官方vendor清单逐项核对、干净源码发布。
-- [ ] 当前源码的Linux amd64与arm64 Release镜像分别启动、架构与健康接口、SIGTERM检查。
-- [ ] GitHub公开源码推送、Docker Hub双架构镜像公开拉取、latest与时间戳对应同一索引。
+- [x] Git索引中8775项官方vendor的模式与内容SHA逐项核对；源码已推送公开main，未提交私有配置或验收原包。
+- [x] 当前源码的Linux amd64与arm64 Release镜像分别启动；ELF架构、动态依赖、UID10001、health、管理页面及认证、许可文件、SIGTERM零退出通过。x86_64运行检查在Apple Silicon的Docker仿真环境执行。
+- [x] GitHub公开源码推送、Docker Hub双架构镜像匿名拉取、latest与时间戳对应同一索引；镜像标签中的源码提交、许可、版本与平台均核对。
 
 发行不替代真实双Pro及其余协议待验，不执行生产部署。
+
+发行回执：`wxyin/right-codex:20261009T235948Z` 与 `latest`，索引 `sha256:8b11a6de8914d285bbb14fb4563db8a0b2459efe66692298889da25dce7da82b`，代码 `093c618dfa03a8efb3ef7ac781120d93b3382481`。证据：`var/verification/public-image-smoke.json`、`public-registry-check.json` 及对应构建/上传/匿名拉取日志。发布后的实际镜像亦已启动检查；本次不计真实OAuth联合验收。

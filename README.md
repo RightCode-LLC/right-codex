@@ -126,6 +126,6 @@ python3 scripts/vendor-codex-source.py --check
 python3 scripts/verify-profile.py
 ```
 
-测试脚本中的 Python 只用于审计和源码核验，产品运行时是 Rust。本轮Codex2API接入后的完整215项回归通过，含10项接口集成测试；构建、严格Clippy与原版客户端消费验证见审计文档。正文原样保留与协议身份独立映射继续保留。此前Linux amd64/arm64容器、同版本备份恢复、原版普通/工具差分及真实Linux OAuth分层记录，不自动视为本轮源码复验。实际验证进度见 [审计文档](docs/IMPLEMENTATION-AUDIT.md)、[验收清单](docs/ACCEPTANCE.md)。实现、受控测试、真实 OAuth、Linux 双架构与部署分别记录，不把 SDK 局部成功当作所有客户端功能通过。
+测试脚本中的 Python 只用于审计和源码核验，产品运行时是 Rust。本轮Codex2API接入后的完整215项回归通过，含10项接口集成测试；构建、严格Clippy与原版客户端消费验证见审计文档。正文原样保留与协议身份独立映射继续保留。公开发行已核验当前代码的Linux amd64/arm64容器启动、管理认证、退出及两个架构的匿名拉取；x86_64启动在Docker仿真环境执行。同版本备份恢复、原版普通/工具差分及真实Linux OAuth仍按各自历史快照记录，不自动视为本次重新验收。实际验证进度见 [审计文档](docs/IMPLEMENTATION-AUDIT.md)、[验收清单](docs/ACCEPTANCE.md)。实现、受控测试、真实 OAuth、Linux 双架构与部署分别记录，不把 SDK 局部成功当作所有客户端功能通过。
 
 固定官方提交：`a956835d020762cb2b570053af06f643a11c0ecc`。vendor 独立导出并校验，不读取来源仓库未提交文件；不修改官方源码。原始 [LICENSE](vendor/codex/LICENSE) 与 [NOTICE](vendor/codex/NOTICE) 保留。完整技术合同见 [PLAN](PLAN.md)，逐端点 OAuth 消费者见 [覆盖清单](docs/PROTOCOL-COVERAGE.md)。
